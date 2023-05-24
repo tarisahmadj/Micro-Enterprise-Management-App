@@ -66,7 +66,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Project ini berjalan menggunakan mesin [![Laravel][Laravel.com]][Laravel-url] dengan projek yang bernama E-Bumdes Grobogan
+Project ini berjalan menggunakan mesin * [![Laravel][Laravel.com]][Laravel-url] dengan projek yang bernama E-Bumdes Grobogan
 
 ### Langkah Awal
 
