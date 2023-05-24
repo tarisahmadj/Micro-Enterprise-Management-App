@@ -96,7 +96,8 @@ _Langkah- langkah penginstalan._
    ```
 <!-- 3. Enter your API in `config.js`
    ```js
-   const API_KEY = 'ENTER YOUR API'; -->
+   const API_KEY = 'ENTER YOUR API'; 
    ```
+-->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
