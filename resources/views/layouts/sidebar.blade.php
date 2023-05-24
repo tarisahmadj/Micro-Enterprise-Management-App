@@ -7,6 +7,19 @@
       </a>
     </li>
     {{-- <hr style="border: 1px solid #8e9aba; width:100%;"> --}}
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#desa" aria-expanded="false" aria-controls="desa">
+        <i class="icon-grid-2 menu-icon ti-settings mb-1"></i>
+        <span class="menu-title">USAHA</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="desa">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/usaha">BERJALAN</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/akun">DIKEMBANGKAN</a></li>
+        </ul>
+      </div>
+    </li>
     <li class="nav-item {{ Request::is('akun') ? 'active' : '' }}">
       <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
         <i class="icon-grid-2 menu-icon ti-settings mb-1"></i>

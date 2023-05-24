@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\UsahaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,7 @@ Route::middleware(['auth'])->group(function () {
   
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+  // usaha yang ada
+  Route::get('/usaha', [UsahaController::class, 'usaha'])->name('usaha yang ada');
 });

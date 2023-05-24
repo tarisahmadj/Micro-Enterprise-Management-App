@@ -36,19 +36,33 @@
           <h2 class="text-center font-weight-bold">Wisata Desa di Kabupaten Grobogan</h2>
         </div>
       </div>
-      <div class="row">
-        <div class="col-3">
-          <div class="card py-4 px-3">
-            <img src="../../template/images/banner.jpg" alt="Gambar Wisata" class="mw-100 rounded">
+      <style type="text/css">
+        .pagination li{
+          float: left;
+          list-style-type: none;
+          margin:5px;
+        }
+	    </style>
+      <div class="row" style="display: flex;justify-content: space-between;">
+      <?php $rs = \DB::table('pariwisatas')->paginate(6)?>
+      @foreach ( $rs as $item)
+        <!-- <div class="col-3 "> -->
+          <div class="card py-4 px-2" style="width: 18rem;height: 18rem;margin: 10px;">
+            <img src="../../template/images/{{ @$item->foto  }}" alt="Gambar Wisata" class="mw-100 rounded">
             <div class="mx-1">
-              <h5 class="text-center font-weight-bold my-3">Desa Wisata</h5>
-              <p>Kelurahan</p>
-              <p>Kecamatan</p>
+              <h5 class="text-center font-weight-bold my-3">{{ @$item->wisata }} </h5>
+              <p> Kelurahan : {{  \App\Models\Pariwisata::getKelurahan(@$item->kelurahan)  }}</p>
+              <p> Kecamatan :{{  \App\Models\Pariwisata::getKecamatan(@$item->kecamatan)  }}</p>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
+        @endforeach     
+      
       </div>
+      {{ $rs->links('pagination::bootstrap-4') }}
     </div>
+    <!-- <div style = "margin : 5px;list-style-type: none;float: left;"> -->
+    <!-- </div> -->
   </div>
   {{-- End ofSection 2 --}}
   
