@@ -56,6 +56,13 @@ return [
             'throw' => false,
         ],
 
+        'custom' => [
+            'driver' => 'local',
+            'root' => storage_path('public/template/images'), // Direktori root penyimpanan untuk driver baru
+            'url' => env('APP_URL').'/custom', // URL yang akan digunakan untuk akses file yang disimpan
+            'visibility' => 'public', // Visibility (opsional)
+        ],
+
     ],
 
     /*

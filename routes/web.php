@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\UsahaController;
+use App\Http\Controllers\UsahausulanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +34,14 @@ Route::middleware(['auth'])->group(function () {
   
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+  
   // usaha yang ada
-  Route::get('/usaha', [UsahaController::class, 'usaha'])->name('usaha yang ada');
+  // Route::get('/usaha/create', [UsahaController::class, 'usaha'])->name('usaha');
+  Route::resource('/usaha', UsahaController::class);
+
+  //Usaha Usulan
+  Route::resource('/usulusaha', UsahausulanController::class);
+
+  Route::get('/files/download/{fileId}', [DashboardController::class,'getDownload']);
+  Route::get('/verif/{id}', [DashboardController::class,'getVerif']);
 });

@@ -19,5 +19,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'role_id' => 1,
         ]);
+        
+        \App\Models\Pariwisata::insert([
+            'kecamatan' => 1,
+            'kelurahan' => 1,
+            'wisata' => "curug",
+            'foto' => "banner.jpg",
+        ]);
     }
 }

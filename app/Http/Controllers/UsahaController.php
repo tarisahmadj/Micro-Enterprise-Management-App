@@ -12,7 +12,11 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        //
+        $usaha = Usaha::all();
+        return view('usaha/usaha1', [
+            'title' => 'usaha yang ada',
+            'usaha' => $usaha,
+        ]);
     }
 
     /**
@@ -20,7 +24,9 @@ class UsahaController extends Controller
      */
     public function create()
     {
-        //
+        return view('usaha/usaha1_create', [
+            'title' => 'Usaha', 
+        ]);
     }
 
     /**
@@ -38,44 +44,59 @@ class UsahaController extends Controller
         // $validatedData['ada_pengampu'] = 0;
         Usaha::create($validatedData);
 
-        return redirect('/ruang')->with('success', 'Ruang Kelas baru berhasil ditambahkan');
+        return redirect('/usaha')->with('success', 'Ruang Kelas baru berhasil ditambahkan');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Usaha $usaha)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     $usaha = Usaha::where('id',$id)->first();
+    //     return view('usaha/usaha1_detail', [
+    //         'title' => 'usaha yang ada',
+    //         'usaha' => $usaha,
+    //     ]);
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usaha $usaha)
+    public function edit($id)
     {
-        //
+        $usaha = Usaha::where('id',$id)->first();
+        return view('usaha/usaha1_edit', [
+            'title' => 'usaha yang ada',
+            'usaha' => $usaha,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usaha $usaha)
+    public function update($id, Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'usaha_berjalan'     => 'required',
+            'average_omset' => 'required',
+            'modal_usaha' => 'required',
+        ]);
+
+        // $validatedData['kuota'] = $validatedData['jml_siswa'];
+        // $validatedData['ada_pengampu'] = 0;
+        Usaha::where('id', $id)->update($validatedData);
+
+        return redirect('/usaha')->with('success', 'Ruang Kelas baru berhasil ditambahkan');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usaha $usaha)
+    public function destroy($id)
     {
-        //
-    }
+        // Delete usaha
+        Usaha::destroy($id);
 
-    public function usaha(){
-        return view('usaha/usaha1', [
-            'title' => 'usaha yang ada',
-        ]);
+        return redirect('/usaha')->with('deleted', 'Kelas berhasil dihapus');
     }
 }

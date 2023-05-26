@@ -24,7 +24,7 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
-            <a href="/usaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Ruang Kelas</a>
+            <a href="/usulusaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Ruang Kelas</a>
             <form action="/searchRuang" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Usaha..." aria-label="Search...">
             </form>
@@ -52,15 +52,17 @@
             </button>
           </div>
           @endif
+          <?php dd(Auth::check());?>
           
           <div class="table-responsive">
             <table class="table table-hover table-striped">
               <thead>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Usaha Berjalan</th>
-                  <th scope="col">Omset Rata-rata</th>
-                  <th scope="col">Modal Usaha</th>
+                  <th scope="col">Usulan Usaha</th>
+                  <th scope="col">Scan Surat</th>
+                  <th scope="col">Masalah Usaha Sebelumnya</th>
+                  <th scope="col">Status Usulan</th>
                   <th scope="col">Aksi</th>
                 </tr>
               </thead>
@@ -68,12 +70,16 @@
                 @foreach ($usaha as $item)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->usaha_berjalan }}</td>
-                    <td>{{ $item->average_omset }}</td>
-                    <td>{{ $item->modal_usaha }}</td>
+                    <td>{{ $item->usaha_usulan }}</td>
                     <td>
-                      <!-- <a href="/usaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a> -->
-                      <a href="/usaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
+                      <img src="../../custom/{{ $item->scan_surat }}" alt="scan-surat" width="100px" class="rounded">
+                    </td>
+                    <td>{{ $item->permasalahan_usaha_sebelum }}</td>
+                    <td>{{ $item->status==2?'disetujui':'mengusulkan' }}</td>
+                    <td>
+                      <a href="/usulusaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
+                      <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
+                      <a href="/usulusaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
                     </td>
                   </tr>
@@ -117,7 +123,7 @@
   </div>
   <script>
     function handleDelete(id){
-      document.getElementById('formDelete').action = `/usaha/${id}`
+      document.getElementById('formDelete').action = `/usulusaha/${id}`
     }
   </script>
 @endsection
