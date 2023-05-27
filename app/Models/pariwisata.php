@@ -9,7 +9,7 @@ class pariwisata extends Model
 {
     use HasFactory;
 
-    protected $table = 'parawisatas';
+    protected $table = 'pariwisatas';
 
     public static function getKecamatan($kec){
         $ARR[1] = 'SEMARANG';

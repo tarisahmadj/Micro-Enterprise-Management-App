@@ -29,7 +29,7 @@
   {{-- End of Section 1 --}}
 
   {{-- Section 2 --}}
-  <div class="bg-secondary">
+  <div style="background-color: #E5E7EB;">
     <div class="container py-5" id="#wisata">
       <div class="row my-5">
         <div class="col-12">
@@ -43,7 +43,7 @@
           margin:5px;
         }
 	    </style>
-      <div class="row" style="display: flex;justify-content: space-between;">
+      <div class="row my-5" style="display: flex;justify-content: space-between;">
       <?php $rs = \DB::table('pariwisatas')->paginate(6)?>
       @foreach ( $rs as $item)
         <!-- <div class="col-3 "> -->

@@ -34,27 +34,6 @@
               <a class="nav-link {{ Request::is('/') ? 'active' : '' }} font-weight-bold text-lg" href="/">Beranda <span class="sr-only">(current)</span></a>
               <a class="nav-link font-weight-bold text-lg" href="#wisata">Wisata Desa</a>
               <a href="/login" class="btn btn-sm btn-primary my-auto font-weight-bold">Login</a>
-              <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="">
-                <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Masuk sebagai : </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-md-12 d-flex justify-content-between">
-                          <a class="btn btn-sm btn-primary px-4 my-auto font-weight-bold" href="admin/login">Admin</a>
-                          <a class="btn btn-sm btn-primary px-4 my-auto font-weight-bold" href="/login">User</a>
-                          <a class="btn btn-sm btn-primary px-4 my-auto font-weight-bold" href="superadmin/login">TU</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
