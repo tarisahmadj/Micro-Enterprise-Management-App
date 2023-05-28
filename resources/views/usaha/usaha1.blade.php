@@ -5,13 +5,13 @@
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-          <h3 class="font-weight-bold">Usaha Yang Berjalan</h3>
+          <h3 class="font-weight-bold">Usaha Berjalan</h3>
         </div>
         <div class="col-12 col-xl-4">
           <div class="justify-content-end d-flex">
           <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
             <button class="btn btn-sm btn-light bg-white" type="button" disabled>
-              12 januari 2001
+              {{ $tgl }}
             </button>
           </div>
           </div>
@@ -24,8 +24,8 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
-            <a href="/usaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Ruang Kelas</a>
-            <form action="/searchRuang" method="get">
+            <a href="/usaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usaha</a>
+            <form action="/searchUsaha" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Usaha..." aria-label="Search...">
             </form>
           </div>
@@ -65,19 +65,25 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($usaha as $item)
+                @if ($usaha->first() == null)
                   <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->usaha_berjalan }}</td>
-                    <td>{{ $item->average_omset }}</td>
-                    <td>{{ $item->modal_usaha }}</td>
-                    <td>
-                      <!-- <a href="/usaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a> -->
-                      <a href="/usaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
-                    </td>
+                    <td colspan="5" class="text-center">Tidak ada usaha berjalan</td>
                   </tr>
-                @endforeach
+                @else
+                  @foreach ($usaha as $item)
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $item->usaha_berjalan }}</td>
+                      <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td>
+                      <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td>
+                      <td>
+                        <!-- <a href="/usaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a> -->
+                        <a href="/usaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
+                      </td>
+                    </tr>
+                  @endforeach
+                @endif
               </tbody>
             </table>
           </div>
@@ -102,7 +108,7 @@
         <div class="modal-body d-flex flex-column ">
           <img src="../../template/images/warning.png" width="90px" class="mx-auto" alt="warning">
           <br>
-          <h3 class="text-center text-muted">Anda yakin akan menghapus kelas ini?</h3>
+          <h3 class="text-center text-muted">Anda yakin akan menghapus usaha ini?</h3>
         </div>
         <div class="modal-footer mx-auto mb-4">
           <form id="formDelete" method="POST">

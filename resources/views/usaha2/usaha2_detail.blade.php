@@ -5,7 +5,7 @@
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-          <h3 class="font-weight-bold">Tambah usaha yang ada</h3>
+          <h3 class="font-weight-bold">Detail usulan usaha</h3>
         </div>
       </div>
     </div>
@@ -14,44 +14,24 @@
     <div class="col-md-12 grid-margin">
       <div class="card p-4">
         <div class="card-body">
-          <form method="POST" action="/usulusaha" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-              <label for="usaha_usulan">Usaha Usulan</label>
-              <input type="text" class="form-control @error('usaha_usulan') is-invalid @enderror" id="usaha_usulan" name="usaha_usulan" required value="{{ old('usaha_usulan',$usaha->usaha_usulan) }}" disabled>
-              @error('usaha_usulan')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
-            <div class="form-group">
-              <label for="scan_surat"> Scan Surat</label>
-              <!-- <input type="file" class="form-control @error('scan_surat') is-invalid @enderror" id="scan_surat" name="scan_surat" required value="{{ old('scan_surat') }}"> -->
+          <div class="row">
+            <div class="col-md-4">
+              <h4 class="mb-3">Scan Surat</h4>
               <img src="../../custom/{{ @$usaha->scan_surat  }}" alt="Scan Surat" name="scan_surat" class="mw-100 rounded">
-              @error('scan_surat')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
             </div>
-            <div class="form-group">
-              <a href="/files/download/{{ $usaha->id}}">Download File</a>
+            <div class="col-md-8">
+              <h4 class="mb-3">Detail usulan</h4>
+              <div class="d-flex flex-column">
+                <p>Usulan usaha : {{ $usaha->usaha_usulan }}</p>
+                <p>Permasalahan usaha sebelum : {{ $usaha->permasalahan_usaha_sebelum }}</p>
+                <a href="/files/download/{{ $usaha->id}}">Download Scan Surat</a>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="permasalahan_usaha_sebelum">Permasalahan usaha sebelum</label>
-              <input type="text" class="form-control @error('permasalahan_usaha_sebelum') is-invalid @enderror" id="permasalahan_usaha_sebelum" name="permasalahan_usaha_sebelum" required value="{{ old('permasalahan_usaha_sebelum',$usaha->permasalahan_usaha_sebelum) }}" disabled>
-              @error('permasalahan_usaha_sebelum')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
-            <div class="mt-3">
-              <a href="/usulusaha" class="btn btn-primary">Kembali</a>
-              <!-- <button type="submit" class="btn btn-success">Simpan</button> -->
-            </div>
-          </form>
+          </div>
+          <div class="mt-4">
+            <a href="/usulusaha" class="btn btn-primary">Kembali</a>
+            <!-- <button type="submit" class="btn btn-success">Simpan</button> -->
+          </div>
         </div>
       </div>
     </div>

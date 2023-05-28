@@ -29,7 +29,7 @@
   {{-- End of Section 1 --}}
 
   {{-- Section 2 --}}
-  <div class="bg-secondary">
+  <section id="wisata" style="background-color: #E5E7EB;">
     <div class="container py-5" id="#wisata">
       <div class="row my-5">
         <div class="col-12">
@@ -43,11 +43,11 @@
           margin:5px;
         }
 	    </style>
-      <div class="row" style="display: flex;justify-content: space-between;">
+      <div class="row my-5" style="display: flex;justify-content: space-between;">
       <?php $rs = \DB::table('pariwisatas')->paginate(6)?>
       @foreach ( $rs as $item)
-        <!-- <div class="col-3 "> -->
-          <div class="card py-4 px-2" style="width: 18rem;height: 18rem;margin: 10px;">
+        <div class="col-3 ">
+          <div class="card p-4" style="width: 18rem;height: 18rem;margin: 10px;">
             <img src="../../template/images/{{ @$item->foto  }}" alt="Gambar Wisata" class="mw-100 rounded">
             <div class="mx-1">
               <h5 class="text-center font-weight-bold my-3">{{ @$item->wisata }} </h5>
@@ -55,7 +55,7 @@
               <p> Kecamatan :{{  \App\Models\Pariwisata::getKecamatan(@$item->kecamatan)  }}</p>
             </div>
           </div>
-        <!-- </div> -->
+        </div>
         @endforeach     
       
       </div>
