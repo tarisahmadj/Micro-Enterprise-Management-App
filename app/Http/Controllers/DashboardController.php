@@ -2,15 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Usaha;
+use App\Models\pariwisata;
 use App\Models\Usahausulan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 
 class DashboardController extends Controller
 {
     public function index(){
+        $usaha = Usaha::latest()->get();
+        $usulan_usaha = Usahausulan::latest()->get();
+        $pariwisata = pariwisata::latest()->count();
+        $user = User::where('role_id', 0)->count();
+
         return view('content/dashboard', [
             'title' => 'Dashboard',
+            'usaha' => $usaha,
+            'usulan' => $usulan_usaha,
+            'pariwisata' => $pariwisata,
+            'user' => $user,
         ]);
     }
 
@@ -44,12 +57,13 @@ class DashboardController extends Controller
 
     public function getVerif($id){
         
-        \DB::table('usaha_usulan')->where('id',$id)->update(['status' => 2]);
+        DB::table('usaha_usulan')->where('id',$id)->update(['status' => 2]);
         $usaha = Usahausulan::all();
         
         return view('usaha2/usaha2', [
             'title' => 'usaha usulan',
             'usaha' => $usaha,
+            'tgl'   => date('l, d F Y'),
         ]);
     }
 }

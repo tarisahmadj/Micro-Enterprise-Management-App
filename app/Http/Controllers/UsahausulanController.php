@@ -14,8 +14,9 @@ class UsahausulanController extends Controller
     {
         $usaha = Usahausulan::all();
         return view('usaha2/usaha2', [
-            'title' => 'usaha usulan',
+            'title' => 'Usulan Usaha',
             'usaha' => $usaha,
+            'tgl'   => date('l, d F Y'),
         ]);
     }
 
@@ -48,7 +49,7 @@ class UsahausulanController extends Controller
         // $validatedData['ada_pengampu'] = 0;
         Usahausulan::create($validatedData);
 
-        return redirect('/usulusaha')->with('success', 'Ruang Kelas baru berhasil ditambahkan');
+        return redirect('/usulusaha')->with('success', 'Usulan Usaha baru berhasil ditambahkan');
     }
 
     /**
@@ -58,7 +59,7 @@ class UsahausulanController extends Controller
     {
         $usaha = Usahausulan::where('id',$id)->first();
         return view('usaha2/usaha2_detail', [
-            'title' => 'usaha yang ada',
+            'title' => 'Detail Usulan',
             'usaha' => $usaha,
         ]);
     }
@@ -70,7 +71,7 @@ class UsahausulanController extends Controller
     {
         $usaha = Usahausulan::where('id',$id)->first();
         return view('usaha2/usaha2_edit', [
-            'title' => 'usaha yang ada',
+            'title' => 'Update Usulan',
             'usaha' => $usaha,
         ]);
     }
@@ -98,7 +99,7 @@ class UsahausulanController extends Controller
             Usahausulan::destroy($id);
         }
 
-        return redirect('/usulusaha')->with('success', 'Ruang Kelas baru berhasil ditambahkan');
+        return redirect('/usulusaha')->with('success', 'Usulan Usaha berhasil diupdate');
     }
 
     /**
@@ -109,6 +110,18 @@ class UsahausulanController extends Controller
         // Delete usaha
         Usahausulan::destroy($id);
 
-        return redirect('/usulusaha')->with('deleted', 'Kelas berhasil dihapus');
+        return redirect('/usulusaha')->with('deleted', 'Usulan Usaha berhasil dihapus');
+    }
+
+    public function searchUsulan(Request $request){
+        $keyword = $request->search;
+
+        $usulan = Usahausulan::where('usaha_usulan', 'like', "%" . $keyword . "%")->get();
+
+        return view('usaha/usaha1', [
+            'title' => 'Usulan Usaha',
+            'usaha' => $usulan,
+            'tgl'   => date('l, d F Y'),
+        ]);
     }
 }

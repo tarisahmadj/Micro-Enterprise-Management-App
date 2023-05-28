@@ -5,13 +5,13 @@
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-          <h3 class="font-weight-bold">Usaha Yang Berjalan</h3>
+          <h3 class="font-weight-bold">Usulan Usaha</h3>
         </div>
         <div class="col-12 col-xl-4">
           <div class="justify-content-end d-flex">
           <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
             <button class="btn btn-sm btn-light bg-white" type="button" disabled>
-              12 januari 2001
+              {{ $tgl }}
             </button>
           </div>
           </div>
@@ -24,9 +24,9 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
-            <a href="/usulusaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Ruang Kelas</a>
-            <form action="/searchRuang" method="get">
-              <input type="text" name="search" class="form-control" placeholder="Search Usaha..." aria-label="Search...">
+            <a href="/usulusaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usulan Usaha</a>
+            <form action="/searchUsulan" method="get">
+              <input type="text" name="search" class="form-control" placeholder="Search Usulan..." aria-label="Search...">
             </form>
           </div>
           @if (session()->has('success'))
@@ -51,9 +51,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          @endif
-          <?php dd(Auth::check());?>
-          
+          @endif          
           <div class="table-responsive">
             <table class="table table-hover table-striped">
               <thead>
@@ -67,23 +65,37 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($usaha as $item)
+                @if ($usaha->first() == null)
                   <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->usaha_usulan }}</td>
-                    <td>
-                      <img src="../../custom/{{ $item->scan_surat }}" alt="scan-surat" width="100px" class="rounded">
-                    </td>
-                    <td>{{ $item->permasalahan_usaha_sebelum }}</td>
-                    <td>{{ $item->status==2?'disetujui':'mengusulkan' }}</td>
-                    <td>
-                      <a href="/usulusaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
-                      <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
-                      <a href="/usulusaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
-                    </td>
+                    <td colspan="6" class="text-center">Tidak ada usulan usaha</td>
                   </tr>
-                @endforeach
+                @else
+                  @foreach ($usaha as $item)
+                    <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $item->usaha_usulan }}</td>
+                      <td>
+                        <img src="../../custom/{{ $item->scan_surat }}" alt="scan-surat" width="100px" class="rounded">
+                      </td>
+                      <td>{{ $item->permasalahan_usaha_sebelum }}</td>
+                      @if ($item->status == 2)
+                        <td>
+                          <p class="badge badge-success">Disetujui</p>
+                        </td>
+                      @else
+                        <td>
+                          <p class="badge badge-warning">Mengusulkan</p>
+                        </td>
+                      @endif
+                      <td>
+                        <a href="/usulusaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
+                        <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
+                        <a href="/usulusaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
+                      </td>
+                    </tr>
+                  @endforeach
+                @endif
               </tbody>
             </table>
           </div>
@@ -108,7 +120,7 @@
         <div class="modal-body d-flex flex-column ">
           <img src="../../template/images/warning.png" width="90px" class="mx-auto" alt="warning">
           <br>
-          <h3 class="text-center text-muted">Anda yakin akan menghapus kelas ini?</h3>
+          <h3 class="text-center text-muted">Anda yakin akan menghapus usulan ini?</h3>
         </div>
         <div class="modal-footer mx-auto mb-4">
           <form id="formDelete" method="POST">

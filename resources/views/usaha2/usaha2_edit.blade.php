@@ -5,7 +5,7 @@
     <div class="col-md-12 grid-margin">
       <div class="row">
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-          <h3 class="font-weight-bold">Tambah usaha yang ada</h3>
+          <h3 class="font-weight-bold">Edit Usulan Usaha</h3>
         </div>
       </div>
     </div>
@@ -25,24 +25,30 @@
                 </div>
               @enderror
             </div>
-            <div class="form-group">
-              <label for="scan_surat"> Scan Surat</label>
-              <input type="file" class="form-control @error('scan_surat') is-invalid @enderror" id="scan_surat" name="scan_surat" value="{{ old('scan_surat',@$usaha->scan_surat) }}">
-              @error('scan_surat')
-                <div class="invalid-feedback">
-                  {{ $message }}
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="scan_surat"> Scan Surat</label>
+                  <input type="file" class="form-control @error('scan_surat') is-invalid @enderror" id="scan_surat" name="scan_surat" value="{{ old('scan_surat',@$usaha->scan_surat) }}">
+                  @error('scan_surat')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
                 </div>
-              @enderror
-            </div>
-            <div class="form-group">
-              <label for="scan_surat1"> Scan Surat</label>
-              <!-- <input type="file" class="form-control @error('scan_surat1') is-invalid @enderror" id="scan_surat1" name="scan_surat1" required value="{{ old('scan_surat1') }}"> -->
-              <img src="../../custom/{{ @$usaha->scan_surat  }}" alt="Scan Surat" name="scan_surat1" class="mw-100 rounded">
-              @error('scan_surat1')
-                <div class="invalid-feedback">
-                  {{ $message }}
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="scan_surat1"> Scan Surat</label>
+                  <!-- <input type="file" class="form-control @error('scan_surat1') is-invalid @enderror" id="scan_surat1" name="scan_surat1" required value="{{ old('scan_surat1') }}"> -->
+                  <img src="../../custom/{{ @$usaha->scan_surat  }}" alt="Scan Surat" name="scan_surat1" class="w-75 rounded">
+                  @error('scan_surat1')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
                 </div>
-              @enderror
+              </div>
             </div>
             <div class="form-group">
               <label for="permasalahan_usaha_sebelum">Permasalahan usaha sebelum</label>
@@ -55,7 +61,7 @@
             </div>
             <div class="mt-3">
               <a href="/usulusaha" class="btn btn-primary">Kembali</a>
-              <button type="submit" class="btn btn-success">Simpan</button>
+              <button type="submit" class="btn btn-warning">Update</button>
             </div>
           </form>
         </div>

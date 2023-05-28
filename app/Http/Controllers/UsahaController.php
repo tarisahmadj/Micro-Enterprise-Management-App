@@ -13,9 +13,12 @@ class UsahaController extends Controller
     public function index()
     {
         $usaha = Usaha::all();
+        $tgl = date('l, d F Y');
+
         return view('usaha/usaha1', [
-            'title' => 'usaha yang ada',
+            'title' => 'Usaha Berjalan',
             'usaha' => $usaha,
+            'tgl'   => $tgl,
         ]);
     }
 
@@ -25,7 +28,7 @@ class UsahaController extends Controller
     public function create()
     {
         return view('usaha/usaha1_create', [
-            'title' => 'Usaha', 
+            'title' => 'Tambah Usaha', 
         ]);
     }
 
@@ -44,7 +47,7 @@ class UsahaController extends Controller
         // $validatedData['ada_pengampu'] = 0;
         Usaha::create($validatedData);
 
-        return redirect('/usaha')->with('success', 'Ruang Kelas baru berhasil ditambahkan');
+        return redirect('/usaha')->with('success', 'Usaha baru berhasil ditambahkan');
     }
 
     /**
@@ -66,7 +69,7 @@ class UsahaController extends Controller
     {
         $usaha = Usaha::where('id',$id)->first();
         return view('usaha/usaha1_edit', [
-            'title' => 'usaha yang ada',
+            'title' => 'Update Usaha',
             'usaha' => $usaha,
         ]);
     }
@@ -86,7 +89,7 @@ class UsahaController extends Controller
         // $validatedData['ada_pengampu'] = 0;
         Usaha::where('id', $id)->update($validatedData);
 
-        return redirect('/usaha')->with('success', 'Ruang Kelas baru berhasil ditambahkan');
+        return redirect('/usaha')->with('success', 'Usaha berhasil diupdate');
     }
 
     /**
@@ -97,6 +100,18 @@ class UsahaController extends Controller
         // Delete usaha
         Usaha::destroy($id);
 
-        return redirect('/usaha')->with('deleted', 'Kelas berhasil dihapus');
+        return redirect('/usaha')->with('deleted', 'Usaha berhasil dihapus');
+    }
+
+    public function searchUsaha(Request $request){
+        $keyword = $request->search;
+
+        $usaha = Usaha::where('usaha_berjalan', 'like', "%" . $keyword . "%")->get();
+
+        return view('usaha/usaha1', [
+            'title' => 'Usaha Berjalan',
+            'usaha' => $usaha,
+            'tgl'   => date('l, d F Y'),
+        ]);
     }
 }

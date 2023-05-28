@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
   // usaha yang ada
   // Route::get('/usaha/create', [UsahaController::class, 'usaha'])->name('usaha');
   Route::resource('/usaha', UsahaController::class);
+  Route::get('/searchUsaha', [UsahaController::class, 'searchUsaha']);
 
   //Usaha Usulan
   Route::resource('/usulusaha', UsahausulanController::class);
