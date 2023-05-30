@@ -66,4 +66,35 @@ class DashboardController extends Controller
             'tgl'   => date('l, d F Y'),
         ]);
     }
+
+    // Edit Profile
+    public function edit()
+    {
+        return view('content/akun', [
+            'title' => 'Akun Anda',
+            'akun'  => auth()->guard()->user(),
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name'      => 'required',
+            'email'     => 'required',
+        ]);
+
+        if (!$request->foto) {
+            $validatedData['foto'] = $request->oldFoto;
+        }
+
+        if (!$request->password) {
+            $validatedData['password'] = $request->oldPassword;
+        }
+
+        $validatedData['role_id'] = auth()->user()->role_id;
+
+        User::where('id', $id)->update($validatedData);
+
+        return back()->with('success', 'Data anda berhasil diubah');
+    }
 }
