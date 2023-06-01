@@ -59,7 +59,6 @@ There are many great README templates available on GitHub; however, I didn't fin
 </details> -->
 
 
-
 <!-- ABOUT THE PROJECT
 ## About The Project
 
@@ -76,11 +75,9 @@ Of course, no one template will serve all projects since your needs may be diffe
 
 Use the `BLANK_README.md` to get started.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>-->
 
-
-
-### Built With
+<!--### Built With
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
@@ -108,14 +105,14 @@ Project ini berjalan menggunakan mesin [![Laravel][Laravel.com]][Laravel-url] de
 - minimal php versi 8
 - buat database dengan nama `laravel`
 -->
-<!-- ### Prerequisites
+<!--
+### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 * instal compoer require
   ```sh
   composer install
-  ``` 
-
+  ``` -->
 ### Installation
 
 _Langkah- langkah penginstalan._
