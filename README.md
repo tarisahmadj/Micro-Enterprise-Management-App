@@ -97,7 +97,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
  -->
 
 
-<!-- GETTING STARTED -->
+<!-- GETTING STARTED 
 ## Getting Started
 
 Project ini berjalan menggunakan mesin [![Laravel][Laravel.com]][Laravel-url] dengan projek yang bernama E-Bumdes Grobogan
@@ -107,14 +107,14 @@ Project ini berjalan menggunakan mesin [![Laravel][Laravel.com]][Laravel-url] de
 - pastikan sudah mengintal composer
 - minimal php versi 8
 - buat database dengan nama `laravel`
-
+-->
 <!-- ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 * instal compoer require
   ```sh
   composer install
-  ``` -->
+  ``` 
 
 ### Installation
 
@@ -132,7 +132,7 @@ _Langkah- langkah penginstalan._
    ```js
    const API_KEY = 'ENTER YOUR API'; -->
    ```
-
+-->
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 Here's why:
@@ -176,14 +176,13 @@ Project ini berjalan menggunakan mesin `LARAVEL` dengan projek yang bernama E-Bu
 - minimal php versi 8
 - buat database dengan nama `laravel`
 
-<!-- ### Prerequisites
+### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 * instal compoer require
   ```sh
   composer install
-  ``` -->
-
+  ``` 
 ### Installation
 
 _Langkah- langkah penginstalan._
