@@ -132,7 +132,6 @@ _Langkah- langkah penginstalan._
    ```js
    const API_KEY = 'ENTER YOUR API'; -->
    ```
--->
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 Here's why:
