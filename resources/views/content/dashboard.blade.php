@@ -7,10 +7,12 @@
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold">Hai, {{ auth()->user()->name }}!</h3>
             <h6 class="font-weight-normal mb-0">Selamat datang di aplikasi arsip digital. Anda sekarang adalah 
-              @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
-                <span class="text-primary">admin!</span>
-              @elseif ($user->role_id == 3)
-                <span class="text-primary">user!</span>
+              @if (auth()->user()->role_id == 1)
+                <span class="text-primary">super admin!</span>
+              @elseif (auth()->user()->role_id == 2)
+                <span class="text-primary">admin dinas!</span>
+              @elseif (auth()->user()->role_id == 3)
+                <span class="text-primary">admin desa!</span>
               @endif
             </h6>
           </div>

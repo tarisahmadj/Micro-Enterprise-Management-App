@@ -85,19 +85,21 @@ class UsahausulanController extends Controller
             'usaha_usulan'  => 'required',
             'permasalahan_usaha_sebelum' => 'required',
         ]);
-        // $validatedData['scan_surat'] = $request->file('scan_surat')->store('custom');
-        // dd($validatedData['scan_surat']);
-        if(! $validatedData['scan_surat']){
+
+        if (!$request->scan_surat) {
+            $validatedData['scan_surat'] = $request->oldScan;
+        }
+        
+        if($request->file('scan_surat')){
+            // $validatedData['scan_surat'] = $request->file('scan_surat')->store('');
             $validatedData['scan_surat'] = time().'.'.$request->scan_surat->extension();         
             $request->scan_surat->move(public_path('custom'), $validatedData['scan_surat']);
         }
 
-        // $validatedData['kuota'] = $validatedData['jml_siswa'];
-        // $validatedData['ada_pengampu'] = 0;
         Usahausulan::where('id', $id)->update($validatedData);
-        if(! $validatedData['scan_surat']){
-            Usahausulan::destroy($id);
-        }
+        // if(! $validatedData['scan_surat']){
+        //     Usahausulan::destroy($id);
+        // }
 
         return redirect('/usulusaha')->with('success', 'Usulan Usaha berhasil diupdate');
     }

@@ -27,7 +27,7 @@
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum est beatae magnam ea nihil ab ducimus similique atque veritatis illo. Sunt ratione voluptates sint. Sunt, eius voluptates inventore earum nobis adipisci labore facilis deleniti libero impedit eligendi veniam excepturi modi praesentium fugiat? Asperiores, corporis consequatur aliquam officia esse et blanditiis ratione eos, sequi modi nesciunt repellendus soluta pariatur, natus quo reprehenderit eveniet doloremque dolorum sint vitae assumenda necessitatibus. Quam aperiam eveniet rem eum suscipit mollitia.</p>
       </div>
       <div class="col-6 d-flex">
-        <img src="../../template/images/carousel/banner_3.jpg" alt="gambar aplikasi" width="500px" class="mx-auto rounded">
+        <img src="../../template/images/carousel/banner_3.jpg" alt="gambar aplikasi" width="100%" class="mx-auto rounded">
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
     </div>
     <div class="row my-5">
       <div class="col-6 d-flex">
-        <img src="../../template/images/carousel/banner_3.jpg" alt="gambar sekolah" width="500px" class="mx-auto rounded">
+        <img src="../../template/images/carousel/banner_3.jpg" alt="gambar sekolah" width="100%" class="mx-auto rounded">
       </div>
       <div class="col-6">
         <h3 class="font-weight-bold my-2">Dinas Pemberdayaan Masyarakat, Desa Kabupaten Grobogan</h3>

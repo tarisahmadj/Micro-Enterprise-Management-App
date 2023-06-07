@@ -24,7 +24,9 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
+            @cannot('user')
             <a href="/usulusaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usulan Usaha</a>
+            @endcannot
             <form action="/searchUsulan" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Usulan..." aria-label="Search...">
             </form>
@@ -61,7 +63,9 @@
                   <th scope="col">Scan Surat</th>
                   <th scope="col">Masalah Usaha Sebelumnya</th>
                   <th scope="col">Status Usulan</th>
+                  @cannot('user')
                   <th scope="col">Aksi</th>
+                  @endcannot
                 </tr>
               </thead>
               <tbody>
@@ -87,12 +91,14 @@
                           <p class="badge badge-warning">Mengusulkan</p>
                         </td>
                       @endif
+                      @cannot('user')
                       <td>
                         <a href="/usulusaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
                         <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
                         <a href="/usulusaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
                       </td>
+                      @endcannot
                     </tr>
                   @endforeach
                 @endif
