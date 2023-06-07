@@ -24,7 +24,7 @@ Route::middleware(['guest'])->group(function () {
   Route::get('/', [LandingPageController::class, 'index']);
 
   // Authentication page
-  Route::get('/login', [AuthController::class, 'index']);
+  Route::get('/login', [AuthController::class, 'index'])->name('login');
   Route::post('/authenticate', [AuthController::class, 'authenticate']);
 });
 

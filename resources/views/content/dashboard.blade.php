@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold">Hai, {{ auth()->user()->name }}!</h3>
-            <h6 class="font-weight-normal mb-0">Selamat datang di aplikasi arsip digital. Anda sekarang adalah 
+            <h6 class="font-weight-normal mb-0">Selamat datang di aplikasi bumdes. Anda sekarang adalah 
               @if (auth()->user()->role_id == 1)
                 <span class="text-primary">super admin!</span>
               @elseif (auth()->user()->role_id == 2)
@@ -70,9 +70,9 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Usaha</th>
-                    <th>Omset Rata-rata</th>
-                    <th>Modal Usaha</th>
+                    <th>Nama Desa</th>
+                    <th>Total usaha</th>
+                    {{-- <th></th> --}}
                   </tr>  
                 </thead>
                 <tbody>
@@ -85,8 +85,8 @@
                       <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td class="font-weight-bold">{{ $item->usaha_berjalan }}</td>
-                        <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td>
-                        <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td>
+                        {{-- <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td> --}}
+                        {{-- <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td> --}}
                       </tr>
                     @endforeach
                   @endif
