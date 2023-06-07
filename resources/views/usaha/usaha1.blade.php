@@ -24,7 +24,9 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
+            @cannot('user')
             <a href="/usaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usaha</a>
+            @endcannot
             <form action="/searchUsaha" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Usaha..." aria-label="Search...">
             </form>
@@ -61,7 +63,9 @@
                   <th scope="col">Usaha Berjalan</th>
                   <th scope="col">Omset Rata-rata</th>
                   <th scope="col">Modal Usaha</th>
+                  @cannot('user')
                   <th scope="col">Aksi</th>
+                  @endcannot
                 </tr>
               </thead>
               <tbody>
@@ -76,11 +80,13 @@
                       <td>{{ $item->usaha_berjalan }}</td>
                       <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td>
                       <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td>
+                      @cannot('user')
                       <td>
                         <!-- <a href="/usaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a> -->
                         <a href="/usaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
                       </td>
+                      @endcannot
                     </tr>
                   @endforeach
                 @endif
