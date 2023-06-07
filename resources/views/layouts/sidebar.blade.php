@@ -7,7 +7,7 @@
       </a>
     </li>
     {{-- <hr style="border: 1px solid #8e9aba; width:100%;"> --}}
-    <li class="nav-item {{ Request::is('usaha*') || Request::is('usulusaha*') || Request::is('verif*') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('usaha*') || Request::is('searchUsaha*') || Request::is('usulusaha*') || Request::is('searchUsulan*') || Request::is('verif*') ? 'active' : '' }}">
       <a class="nav-link" data-toggle="collapse" href="#desa" aria-expanded="false" aria-controls="desa">
         <i class="icon-grid-2 menu-icon ti-briefcase mb-1"></i>
         <span class="menu-title">Bumdes</span>

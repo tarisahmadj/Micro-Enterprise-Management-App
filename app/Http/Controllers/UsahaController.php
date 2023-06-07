@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usaha;
+use App\Models\Kabupaten;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
 use Illuminate\Http\Request;
 
 class UsahaController extends Controller
@@ -12,11 +15,11 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        $usaha = Usaha::all();
+        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->get();
         $tgl = date('l, d F Y');
 
         return view('usaha/usaha1', [
-            'title' => 'Usaha Berjalan',
+            'title' => 'Bumdes',
             'usaha' => $usaha,
             'tgl'   => $tgl,
         ]);
@@ -27,8 +30,15 @@ class UsahaController extends Controller
      */
     public function create()
     {
+        $kabupaten = Kabupaten::all();
+        $kecamatan = Kecamatan::all();
+        $kelurahan = Kelurahan::all();
+
         return view('usaha/usaha1_create', [
-            'title' => 'Tambah Usaha', 
+            'title' => 'Tambah Usaha',
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            'kelurahan' => $kelurahan,
         ]);
     }
 
@@ -38,16 +48,16 @@ class UsahaController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'usaha_berjalan'     => 'required',
-            'average_omset' => 'required',
-            'modal_usaha' => 'required',
+            'kabupaten_id' => 'required',
+            'kecamatan_id' => 'required',
+            'desa_id' => 'required',
+            'nama_bumdes' => 'required',
+            'unit_usaha_prioritas' => 'required',
         ]);
 
-        // $validatedData['kuota'] = $validatedData['jml_siswa'];
-        // $validatedData['ada_pengampu'] = 0;
         Usaha::create($validatedData);
 
-        return redirect('/usaha')->with('success', 'Usaha baru berhasil ditambahkan');
+        return redirect('/usaha')->with('success', 'Bumdes baru berhasil ditambahkan');
     }
 
     /**
@@ -67,10 +77,17 @@ class UsahaController extends Controller
      */
     public function edit($id)
     {
-        $usaha = Usaha::where('id',$id)->first();
+        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('id',$id)->first();
+        $kabupaten = Kabupaten::all();
+        $kecamatan = Kecamatan::all();
+        $kelurahan = Kelurahan::all();
+
         return view('usaha/usaha1_edit', [
             'title' => 'Update Usaha',
             'usaha' => $usaha,
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            'kelurahan' => $kelurahan,
         ]);
     }
 
@@ -80,16 +97,16 @@ class UsahaController extends Controller
     public function update($id, Request $request)
     {
         $validatedData = $request->validate([
-            'usaha_berjalan'     => 'required',
-            'average_omset' => 'required',
-            'modal_usaha' => 'required',
+            'kabupaten_id' => 'required',
+            'kecamatan_id' => 'required',
+            'desa_id' => 'required',
+            'nama_bumdes' => 'required',
+            'unit_usaha_prioritas' => 'required',
         ]);
 
-        // $validatedData['kuota'] = $validatedData['jml_siswa'];
-        // $validatedData['ada_pengampu'] = 0;
         Usaha::where('id', $id)->update($validatedData);
 
-        return redirect('/usaha')->with('success', 'Usaha berhasil diupdate');
+        return redirect('/usaha')->with('success', 'Bumdes berhasil diupdate');
     }
 
     /**
@@ -100,16 +117,16 @@ class UsahaController extends Controller
         // Delete usaha
         Usaha::destroy($id);
 
-        return redirect('/usaha')->with('deleted', 'Usaha berhasil dihapus');
+        return redirect('/usaha')->with('deleted', 'Bumdes berhasil dihapus');
     }
 
     public function searchUsaha(Request $request){
         $keyword = $request->search;
 
-        $usaha = Usaha::where('usaha_berjalan', 'like', "%" . $keyword . "%")->get();
+        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('nama_bumdes', 'like', "%" . $keyword . "%")->get();
 
         return view('usaha/usaha1', [
-            'title' => 'Usaha Berjalan',
+            'title' => 'Bumdes',
             'usaha' => $usaha,
             'tgl'   => date('l, d F Y'),
         ]);
