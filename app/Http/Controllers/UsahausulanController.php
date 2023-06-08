@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kabupaten;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
 use App\Models\Usahausulan;
 use Illuminate\Http\Request;
 
@@ -25,8 +28,15 @@ class UsahausulanController extends Controller
      */
     public function create()
     {
+        $kabupaten = Kabupaten::all();
+        $kecamatan = Kecamatan::all();
+        $kelurahan = Kelurahan::all();
+        
         return view('usaha2/usaha2_create', [
-            'title' => 'Usaha', 
+            'title' => 'Tambah Usulan Usaha', 
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            'kelurahan' => $kelurahan,
         ]);
     }
 
@@ -36,17 +46,19 @@ class UsahausulanController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'kabupaten_id'  => 'required',
+            'kecamatan_id'  => 'required',
+            'desa_id'  => 'required',
             'usaha_usulan'  => 'required',
             'scan_surat'    => 'required',
             'permasalahan_usaha_sebelum' => 'required',
         ]);
-        // $validatedData['scan_surat'] = $request->file('scan_surat')->store('custom');
-        // dd($validatedData['scan_surat']);
+
         $validatedData['scan_surat'] = time().'.'.$request->scan_surat->extension();         
         $request->scan_surat->move(public_path('custom'), $validatedData['scan_surat']);
 
-        // $validatedData['kuota'] = $validatedData['jml_siswa'];
-        // $validatedData['ada_pengampu'] = 0;
+        $validatedData['status'] = 1;
+
         Usahausulan::create($validatedData);
 
         return redirect('/usulusaha')->with('success', 'Usulan Usaha baru berhasil ditambahkan');
@@ -57,7 +69,7 @@ class UsahausulanController extends Controller
      */
     public function show($id)
     {
-        $usaha = Usahausulan::where('id',$id)->first();
+        $usaha = Usahausulan::with(['kabupaten', 'kecamatan', 'kelurahan'])->where('id',$id)->first();
         return view('usaha2/usaha2_detail', [
             'title' => 'Detail Usulan',
             'usaha' => $usaha,
@@ -69,10 +81,16 @@ class UsahausulanController extends Controller
      */
     public function edit($id)
     {
-        $usaha = Usahausulan::where('id',$id)->first();
+        $usaha = Usahausulan::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('id',$id)->first();
+        $kabupaten = Kabupaten::all();
+        $kecamatan = Kecamatan::all();
+        $kelurahan = Kelurahan::all();
         return view('usaha2/usaha2_edit', [
             'title' => 'Update Usulan',
             'usaha' => $usaha,
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            'kelurahan' => $kelurahan,
         ]);
     }
 
@@ -82,6 +100,9 @@ class UsahausulanController extends Controller
     public function update($id, Request $request)
     {
         $validatedData = $request->validate([
+            'kabupaten_id' => 'required',
+            'kecamatan_id' => 'required',
+            'desa_id' => 'required',
             'usaha_usulan'  => 'required',
             'permasalahan_usaha_sebelum' => 'required',
         ]);

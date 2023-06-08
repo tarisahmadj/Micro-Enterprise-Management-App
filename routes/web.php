@@ -50,4 +50,5 @@ Route::middleware(['auth'])->group(function () {
 
   Route::get('/files/download/{fileId}', [DashboardController::class,'getDownload']);
   Route::get('/verif/{id}', [DashboardController::class,'getVerif']);
+  Route::get('/tolak/{id}', [DashboardController::class,'getTolak']);
 });

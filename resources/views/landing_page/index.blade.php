@@ -69,23 +69,26 @@
         }
 	    </style>
       <div class="row my-5" style="display: flex;justify-content: space-between;">
-      <?php $rs = \DB::table('pariwisatas')->paginate(6)?>
-      @foreach ( $rs as $item)
+      
+      @foreach ( $pariwisata as $item)
         <div class="col-3 ">
           <div class="card p-4" style="width: 18rem; height: 18rem; margin: 10px; filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));">
             <img src="../../template/images/{{ @$item->foto  }}" alt="Gambar Wisata" class="mw-100 rounded">
             <div class="mx-1">
               <h5 class="text-center font-weight-bold my-3">{{ @$item->wisata }} </h5>
-              <p> Kelurahan : {{  \App\Models\Pariwisata::getKelurahan(@$item->kelurahan)  }}</p>
-              <p> Kecamatan :{{  \App\Models\Pariwisata::getKecamatan(@$item->kecamatan)  }}</p>
+              <p> Kelurahan : {{  $item->kelurahan->nama_kelurahan  }}</p>
+              <p> Kecamatan :{{  $item->kecamatan->nama_kecamatan  }}</p>
             </div>
           </div>
         </div>
-        @endforeach     
+      @endforeach     
       
       </div>
-      {{ $rs->links('pagination::bootstrap-4') }}
-    </div>
+      <div class="d-flex">
+        <div class=" mt-3 mx-auto">
+          {{ $pariwisata->links() }}
+        </div>
+      </div>
     <!-- <div style = "margin : 5px;list-style-type: none;float: left;"> -->
     <!-- </div> -->
   </div>

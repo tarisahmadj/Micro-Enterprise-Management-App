@@ -63,28 +63,29 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex justify-content-between">
-              <p class="card-title mb-3 ml-2">Pemeringkatan Usaha</p>
+              <p class="card-title mb-3 ml-2">Pemeringkatan Bumdes</p>
             </div>
             <div class="table-responsive">
               <table class="table table-striped table-hover">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Desa</th>
-                    <th>Total usaha</th>
+                    <th>Nama Bumdes</th>
+                    <th>Unit usaha prioritas</th>
                     {{-- <th></th> --}}
                   </tr>  
                 </thead>
                 <tbody>
                   @if ($usaha->first() == null)
                     <tr>
-                      <td colspan="4" class="text-center">Belum ada usaha</td>
+                      <td colspan="4" class="text-center">Belum ada bumdes</td>
                     </tr>
                   @else
                     @foreach ($usaha as $item)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td class="font-weight-bold">{{ $item->usaha_berjalan }}</td>
+                        <td class="font-weight-bold">{{ $item->nama_bumdes }}</td>
+                        <td class="font-weight-bold">{{ $item->unit_usaha_prioritas }}</td>
                         {{-- <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td> --}}
                         {{-- <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td> --}}
                       </tr>

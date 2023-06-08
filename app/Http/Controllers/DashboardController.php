@@ -57,14 +57,25 @@ class DashboardController extends Controller
 
     public function getVerif($id){
         
-        DB::table('usaha_usulan')->where('id',$id)->update(['status' => 2]);
-        $usaha = Usahausulan::all();
-        
-        return view('usaha2/usaha2', [
-            'title' => 'usaha usulan',
-            'usaha' => $usaha,
-            'tgl'   => date('l, d F Y'),
+        $usulan = Usahausulan::where('id', $id)->first();
+        $usulan->update(['status' => 2]);
+
+        Usaha::create([
+            'kabupaten_id' => $usulan->kabupaten_id,
+            'kecamatan_id' => $usulan->kecamatan_id,
+            'desa_id' => $usulan->desa_id,
+            'nama_bumdes' => $usulan->usaha_usulan,
+            'unit_usaha_prioritas' => $usulan->permasalahan_usaha_sebelum,
         ]);
+        
+        return back()->with('success', 'Usulan Usaha berhasil diterima, Usulan usaha berhasil masuk ke Usaha berjalan');
+    }
+
+    public function getTolak($id){
+        
+        DB::table('usaha_usulan')->where('id',$id)->update(['status' => 3]);
+        
+        return back()->with('deleted', 'Usulan Usaha berhasil ditolak');
     }
 
     // Edit Profile
