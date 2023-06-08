@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('usahas', function (Blueprint $table) {
             $table->id();
-            $table->char('usaha_berjalan',255);
-            $table->char('average_omset',255);
-            $table->char('modal_usaha',255);
+            $table->foreignId('kabupaten_id')->nullable();
+            $table->foreignId('kecamatan_id')->nullable();
+            $table->foreignId('desa_id')->nullable();
+            $table->char('nama_bumdes',255)->nullable();
+            $table->char('unit_usaha_prioritas',255)->nullable();
             $table->timestamps();
         });
     }

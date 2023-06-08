@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('usaha_usulan', function (Blueprint $table) {
             $table->id();
-            $table->char('usaha_usulan',255);
-            $table->string('scan_surat');
-            $table->char('permasalahan_usaha_sebelum',255);
+            $table->foreignId('kabupaten_id')->nullable();
+            $table->foreignId('kecamatan_id')->nullable();
+            $table->foreignId('desa_id')->nullable();
+            $table->char('usaha_usulan',255)->nullable();
+            $table->string('scan_surat')->nullable();
+            $table->char('permasalahan_usaha_sebelum',255)->nullable();
             $table->integer('status')->default('1');
             $table->timestamps();
         });

@@ -28,7 +28,7 @@
             <a href="/usaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usaha</a>
             @endcannot
             <form action="/searchUsaha" method="get">
-              <input type="text" name="search" class="form-control" placeholder="Search Usaha..." aria-label="Search...">
+              <input type="text" name="search" class="form-control" placeholder="Search Bumdes..." aria-label="Search...">
             </form>
           </div>
           @if (session()->has('success'))
@@ -60,9 +60,11 @@
               <thead>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Usaha Berjalan</th>
-                  <th scope="col">Omset Rata-rata</th>
-                  <th scope="col">Modal Usaha</th>
+                  <th scope="col">Kabupaten</th>
+                  <th scope="col">Kecamatan</th>
+                  <th scope="col">Kelurahan/Desa</th>
+                  <th scope="col">Nama Bumdes</th>
+                  <th scope="col">Unit Usaha Prioritas</th>
                   @cannot('user')
                   <th scope="col">Aksi</th>
                   @endcannot
@@ -77,9 +79,11 @@
                   @foreach ($usaha as $item)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $item->usaha_berjalan }}</td>
-                      <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td>
-                      <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td>
+                      <td>{{ $item->kabupaten->nama_kabupaten }}</td>
+                      <td>{{ $item->kecamatan->nama_kecamatan }}</td>
+                      <td>{{ $item->kelurahan->nama_desa }}</td>
+                      <td>{{ $item->nama_bumdes }}</td>
+                      <td>{{ $item->unit_usaha_prioritas }}</td>
                       @cannot('user')
                       <td>
                         <!-- <a href="/usaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a> -->

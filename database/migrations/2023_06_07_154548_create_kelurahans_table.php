@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pariwisatas', function (Blueprint $table) {
+        Schema::create('kelurahans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kecamatan_id');
-            $table->foreignId('kelurahan_id');
-            $table->char('wisata',255);
-            $table->string('foto');
+            $table->bigInteger('id_desa');
+            $table->string('nama_desa');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pariwisatas');
+        Schema::dropIfExists('kelurahans');
     }
 };
