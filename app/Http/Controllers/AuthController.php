@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -21,10 +24,16 @@ class AuthController extends Controller
 
         if(Auth::attempt($validatedData)){
             $request->session()->regenerate();
+            $email = $request->email;
+            $data = User::where('email',$email)->first();
+            if ($data){
+                Session::put('role_id',$data->role_id);
+                return redirect('/dashboard');
+            }else{
 
-            return redirect('/dashboard');
+                return back()->with('loginError', 'Username atau password anda salah');
+            }
         }
-
         return back()->with('loginError', 'Username atau password anda salah');
     }
 

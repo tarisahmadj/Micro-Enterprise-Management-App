@@ -66,4 +66,85 @@ class DashboardController extends Controller
             'tgl'   => date('l, d F Y'),
         ]);
     }
+
+    public function createAkun(){
+        $data = User::get();
+        return view('content/akun', [
+            'title' => 'akun',
+            'data' => $data,
+            'tgl' => date('l, d F Y'),
+        ]);
+    }
+    public function getAkun($id){
+        return view('content/create_akun', [
+            'title' => 'buat akun',
+            'tgl' => date('l, d F Y'),
+        ]);
+    }
+    public function postAkun(Request $request){
+        $nama = $request->nama;
+        $email = $request->email;
+        $password = $request->password;
+        $password2 = $request->password2;
+        $role = $request->role;
+        if ($password != $password2) {
+            return view('content/create_akun', [
+                'title' => 'buat akun',
+                'nama' => $nama,
+                'email' => $email,
+                'ket' => 'password tidak sama, silahkan ulangi lagi!'
+            ]);
+        } else {
+            $user = new User;
+            $user->name = $nama;
+            $user->email = $email;
+            $user->email_verified_at = date('Y-m-d H:i:s');
+            $user->password = $password;
+            $user->role_id = $role;
+            $remember_token = '';
+            $user->save();
+        }
+        return view('content/akun', [
+            'title' => 'buat akun',
+        ]);
+    }
+    // public function get_edit_Akun($id){
+    //     $data = \DB::table('users')->where('id',$id)->first();
+    //     $nama = $data->nama;
+    //     $email = $data->email;
+    //     $role = $request->role;
+    //     return view('content/create_akun', [
+    //         'title' => 'buat akun',
+    //         'nama' => $nama,
+    //         'email' => $email,
+    //         'role' => $role
+    //     ]);
+    // }
+    // public function post_edit_Akun(Request $request){
+    //     $nama = $request->nama;
+    //     $email = $request->email;
+    //     $password = $request->password;
+    //     $password2 = $request->password2;
+    //     $role = $request->role;
+    //     if ($password != $password2) {
+    //         return view('content/create_akun', [
+    //             'title' => 'buat akun',
+    //             'nama' => $nama,
+    //             'email' => $email,
+    //             'ed' => 1
+    //         ]);
+    //     } else {
+    //         $user = new User;
+    //         $user->name = $nama;
+    //         $user->email = $email;
+    //         $user->email_verified_at = date('Y-m-d H:i:s');
+    //         $user->password = $password;
+    //         $user->role_id = $role;
+    //         $remember_token = '';
+    //         $user->where('email',$email)->update();
+    //     }
+    //     return view('content/akun', [
+    //         'title' => 'buat akun',
+    //     ]);
+    // }
 }

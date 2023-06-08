@@ -89,9 +89,11 @@
                       @endif
                       <td>
                         <a href="/usulusaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
+                        @if ((Session::get('role_id')) == 1)
                         <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
                         <a href="/usulusaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
+                        @endif
                       </td>
                     </tr>
                   @endforeach

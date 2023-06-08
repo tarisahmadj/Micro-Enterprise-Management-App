@@ -24,10 +24,10 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
-            <a href="/usaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usaha</a>
-            <form action="/searchUsaha" method="get">
+            <a href="/getcreateuser" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usaha</a>
+            <!-- <form action="/searchUsaha" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Usaha..." aria-label="Search...">
-            </form>
+            </form> -->
           </div>
           @if (session()->has('success'))
           <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -58,33 +58,37 @@
               <thead>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Usaha Berjalan</th>
-                  <th scope="col">Omset Rata-rata</th>
-                  <th scope="col">Modal Usaha</th>
-                  @if ((Session::get('role_id')) == 1)
-                  <th scope="col">Aksi</th>
-                  @endif
+                  <th scope="col">Nama</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Aksi</th>                  
                 </tr>
               </thead>
               <tbody>
-                @if ($usaha->first() == null)
+                @if ($data->first() == null)
                   <tr>
-                    <td colspan="5" class="text-center">Tidak ada usaha berjalan</td>
+                    <td colspan="5" class="text-center">Tidak ada data berjalan</td>
                   </tr>
                 @else
-                  @foreach ($usaha as $item)
+                  @foreach ($data as $item)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $item->usaha_berjalan }}</td>
-                      <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td>
-                      <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td>
-                      @if ((Session::get('role_id')) == 1)
+                      <td>{{ $item->name }}</td>  
+                      <td>{{ $item->email }}</td> 
+                      @if ($item->role_id == 1)
+                      <td> Super Admin</td>  
+                      @elseif ($item->role_id == 2)
+                      <td> Admin Dinas</td>  
+                      @elseif ($item->role_id == 3)
+                      <td> Admin Desa</td>  
+                      @else
+                      <td> Role belum di tentukan </td>
+                      @endif 
                       <td>
                         <!-- <a href="/usaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a> -->
-                        <a href="/usaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
+                        <!-- <a href="/usaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a> -->
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
                       </td>
-                      @endif
                     </tr>
                   @endforeach
                 @endif
