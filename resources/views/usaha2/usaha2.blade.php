@@ -94,12 +94,15 @@
                       @cannot('user')
                       <td>
                         <a href="/usulusaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
-                        @if ($item->status == 1)
-                          <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
-                          <a href="/tolak/{{ $item->id }}" class="btn btn-dark btn-sm"><i class="ti-close"></i></a>
-                        @endif
+                        @cannot('user')
+                          @if ($item->status == 1)
+                            <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
+                            <a href="/tolak/{{ $item->id }}" class="btn btn-dark btn-sm"><i class="ti-close"></i></a>
+                          @endif
+                        @endcannot
                         <a href="/usulusaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
+                        @endif
                       </td>
                       @endcannot
                     </tr>
