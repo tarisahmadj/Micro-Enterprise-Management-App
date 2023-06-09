@@ -31,13 +31,18 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
   // Logout
   Route::post('/logout', [AuthController::class, 'logout']);
-  
+
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
   // Update Profile
   Route::get('/akun', [DashboardController::class, 'edit']);
   Route::put('/akun/{id}', [DashboardController::class, 'update']);
+  
+  // buat akun
+  Route::get('/akun', [DashboardController::class, 'createAkun'])->name('akun');
+  Route::get('/getcreateuser', [DashboardController::class, 'getAkun'])->name('createakun');
+  Route::post('/createuser', [DashboardController::class, 'postAkun']);
   
   // usaha yang ada
   // Route::get('/usaha/create', [UsahaController::class, 'usaha'])->name('usaha');

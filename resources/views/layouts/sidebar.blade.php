@@ -28,7 +28,7 @@
       </a>
       <div class="collapse" id="tables">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="/akun">Profile</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/akun">tambah user</a></li>
           <li class="nav-item"> 
             <form action="/logout" method="POST" class="nav-link">
               @csrf

@@ -7,6 +7,15 @@
         <div class="col-12 col-xl-8 mb-4 mb-xl-0">
           <h3 class="font-weight-bold">Edit Akun Anda</h3>
         </div>
+        <div class="col-12 col-xl-4">
+          <div class="justify-content-end d-flex">
+          <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+            <button class="btn btn-sm btn-light bg-white" type="button" disabled>
+              {{ $tgl }}
+            </button>
+          </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
