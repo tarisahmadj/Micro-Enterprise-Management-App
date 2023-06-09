@@ -24,6 +24,9 @@
               <div class="d-flex flex-column">
                 <p>Usulan usaha : {{ $usaha->usaha_usulan }}</p>
                 <p>Permasalahan usaha sebelum : {{ $usaha->permasalahan_usaha_sebelum }}</p>
+                <p>Kabupaten : {{ $usaha->kabupaten->nama_kabupaten }}</p>
+                <p>Kecamatan : {{ $usaha->kecamatan->nama_kecamatan }}</p>
+                <p>Kelurahan/Desa : {{ $usaha->kelurahan->nama_desa }}</p>
                 <a href="/files/download/{{ $usaha->id}}">Download Scan Surat</a>
               </div>
             </div>

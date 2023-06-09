@@ -24,7 +24,9 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
+            @cannot('user')
             <a href="/usulusaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usulan Usaha</a>
+            @endcannot
             <form action="/searchUsulan" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Usulan..." aria-label="Search...">
             </form>
@@ -59,9 +61,11 @@
                   <th scope="col">No</th>
                   <th scope="col">Usulan Usaha</th>
                   <th scope="col">Scan Surat</th>
-                  <th scope="col">Masalah Usaha Sebelumnya</th>
+                  {{-- <th scope="col">Masalah Usaha Sebelumnya</th> --}}
                   <th scope="col">Status Usulan</th>
+                  @cannot('user')
                   <th scope="col">Aksi</th>
+                  @endcannot
                 </tr>
               </thead>
               <tbody>
@@ -77,7 +81,7 @@
                       <td>
                         <img src="../../custom/{{ $item->scan_surat }}" alt="scan-surat" width="100px" class="rounded">
                       </td>
-                      <td>{{ $item->permasalahan_usaha_sebelum }}</td>
+                      {{-- <td>{{ $item->permasalahan_usaha_sebelum }}</td> --}}
                       @if ($item->status == 2)
                         <td>
                           <p class="badge badge-success">Disetujui</p>
@@ -87,14 +91,20 @@
                           <p class="badge badge-warning">Mengusulkan</p>
                         </td>
                       @endif
+                      @cannot('user')
                       <td>
                         <a href="/usulusaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
-                        @if ((Session::get('role_id')) == 1)
-                        <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
+                        @cannot('user')
+                          @if ($item->status == 1)
+                            <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
+                            <a href="/tolak/{{ $item->id }}" class="btn btn-dark btn-sm"><i class="ti-close"></i></a>
+                          @endif
+                        @endcannot
                         <a href="/usulusaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
                         @endif
                       </td>
+                      @endcannot
                     </tr>
                   @endforeach
                 @endif

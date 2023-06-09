@@ -23,9 +23,9 @@
 <body>
   <div class="container-scroller">
       {{-- Navbar --}}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top position-relative">
         <div class="container">
-          <a class="navbar-brand" href="/"><img src="../../template/images/jateng.png" alt="logo" width="40px"></a>
+          <a class="navbar-brand font-weight-bold" href="/"><img src="../../template/images/jateng.png" alt="logo" width="40px" class="mr-2"> E-Bumdes</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

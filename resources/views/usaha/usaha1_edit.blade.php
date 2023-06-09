@@ -17,28 +17,48 @@
           <form method="POST" action="/usaha/{{ $usaha->id }}">
             @method('put')
             @csrf
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="kabupaten_id">Kabupaten</label>
+                <select id="kabupaten_id" name="kabupaten_id" class="form-control" required>
+                  <option selected hidden value="{{ $usaha->kabupaten_id }}">{{ $usaha->kabupaten->nama_kabupaten }}</option>
+                  @foreach ($kabupaten as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_kabupaten }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="kecamatan_id">Kecamatan</label>
+                <select id="kecamatan_id" name="kecamatan_id" class="form-control" required>
+                  <option selected hidden value="{{ $usaha->kecamatan_id }}">{{ $usaha->kecamatan->nama_kecamatan }}</option>
+                  @foreach ($kecamatan as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_kecamatan }}</option>
+                  @endforeach
+                </select>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="desa_id">Kelurahan/Desa</label>
+                <select id="desa_id" name="desa_id" class="form-control" required>
+                  <option selected hidden value="{{ $usaha->desa_id }}">{{ $usaha->kelurahan->nama_desa }}</option>
+                  @foreach ($kelurahan as $item)
+                    <option value="{{ $item->id }}">{{ $item->nama_desa }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
             <div class="form-group">
-              <label for="usaha_berjalan">Usaha</label>
-              <input type="text" class="form-control @error('usaha_berjalan') is-invalid @enderror" id="usaha_berjalan" name="usaha_berjalan" required value="{{ old('usaha_berjalan',$usaha->usaha_berjalan) }}">
-              @error('usaha_berjalan')
+              <label for="nama_bumdes">Nama Bumdes</label>
+              <input type="text" class="form-control @error('nama_bumdes') is-invalid @enderror" id="nama_bumdes" name="nama_bumdes" required value="{{ old('nama_bumdes', $usaha->nama_bumdes) }}">
+              @error('nama_bumdes')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>
               @enderror
             </div>
             <div class="form-group">
-              <label for="average_omset">Omset Rata Rata</label>
-              <input type="number" class="form-control @error('average_omset') is-invalid @enderror" id="average_omset" name="average_omset" required value="{{ old('average_omset', $usaha->average_omset) }}">
-              @error('average_omset')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-              @enderror
-            </div>
-            <div class="form-group">
-              <label for="modal_usaha">Modal Usaha</label>
-              <input type="number" class="form-control @error('modal_usaha') is-invalid @enderror" id="modal_usaha" name="modal_usaha" required value="{{ old('modal_usaha', $usaha->modal_usaha) }}">
-              @error('modal_usaha')
+              <label for="unit_usaha_prioritas">Unit Usaha Prioritas</label>
+              <input type="text" class="form-control @error('unit_usaha_prioritas') is-invalid @enderror" id="unit_usaha_prioritas" name="unit_usaha_prioritas" required value="{{ old('unit_usaha_prioritas', $usaha->unit_usaha_prioritas) }}">
+              @error('unit_usaha_prioritas')
                 <div class="invalid-feedback">
                   {{ $message }}
                 </div>

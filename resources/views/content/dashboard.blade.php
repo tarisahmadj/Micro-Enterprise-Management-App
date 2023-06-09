@@ -6,11 +6,13 @@
         <div class="row">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
             <h3 class="font-weight-bold">Hai, {{ auth()->user()->name }}!</h3>
-            <h6 class="font-weight-normal mb-0">Selamat datang di aplikasi arsip digital. Anda sekarang adalah 
-              @if (auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
-                <span class="text-primary">admin!</span>
-              @elseif ($user->role_id == 3)
-                <span class="text-primary">user!</span>
+            <h6 class="font-weight-normal mb-0">Selamat datang di aplikasi bumdes. Anda sekarang adalah 
+              @if (auth()->user()->role_id == 1)
+                <span class="text-primary">super admin!</span>
+              @elseif (auth()->user()->role_id == 2)
+                <span class="text-primary">admin dinas!</span>
+              @elseif (auth()->user()->role_id == 3)
+                <span class="text-primary">admin desa!</span>
               @endif
             </h6>
           </div>
@@ -61,30 +63,31 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex justify-content-between">
-              <p class="card-title mb-3 ml-2">Pemeringkatan Usaha</p>
+              <p class="card-title mb-3 ml-2">Pemeringkatan Bumdes</p>
             </div>
             <div class="table-responsive">
               <table class="table table-striped table-hover">
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Nama Usaha</th>
-                    <th>Omset Rata-rata</th>
-                    <th>Modal Usaha</th>
+                    <th>Nama Bumdes</th>
+                    <th>Unit usaha prioritas</th>
+                    {{-- <th></th> --}}
                   </tr>  
                 </thead>
                 <tbody>
                   @if ($usaha->first() == null)
                     <tr>
-                      <td colspan="4" class="text-center">Belum ada usaha</td>
+                      <td colspan="4" class="text-center">Belum ada bumdes</td>
                     </tr>
                   @else
                     @foreach ($usaha as $item)
                       <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td class="font-weight-bold">{{ $item->usaha_berjalan }}</td>
-                        <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td>
-                        <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td>
+                        <td class="font-weight-bold">{{ $item->nama_bumdes }}</td>
+                        <td class="font-weight-bold">{{ $item->unit_usaha_prioritas }}</td>
+                        {{-- <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td> --}}
+                        {{-- <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td> --}}
                       </tr>
                     @endforeach
                   @endif

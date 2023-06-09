@@ -24,7 +24,7 @@ Route::middleware(['guest'])->group(function () {
   Route::get('/', [LandingPageController::class, 'index']);
 
   // Authentication page
-  Route::get('/login', [AuthController::class, 'index']);
+  Route::get('/login', [AuthController::class, 'index'])->name('login');
   Route::post('/authenticate', [AuthController::class, 'authenticate']);
 });
 
@@ -34,6 +34,10 @@ Route::middleware(['auth'])->group(function () {
 
   // Dashboard
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+  // Update Profile
+  Route::get('/akun', [DashboardController::class, 'edit']);
+  Route::put('/akun/{id}', [DashboardController::class, 'update']);
   
   // buat akun
   Route::get('/akun', [DashboardController::class, 'createAkun'])->name('akun');
@@ -44,10 +48,12 @@ Route::middleware(['auth'])->group(function () {
   // Route::get('/usaha/create', [UsahaController::class, 'usaha'])->name('usaha');
   Route::resource('/usaha', UsahaController::class);
   Route::get('/searchUsaha', [UsahaController::class, 'searchUsaha']);
-
+  
   //Usaha Usulan
   Route::resource('/usulusaha', UsahausulanController::class);
+  Route::get('/searchUsulan', [UsahaController::class, 'searchUsulan']);
 
   Route::get('/files/download/{fileId}', [DashboardController::class,'getDownload']);
   Route::get('/verif/{id}', [DashboardController::class,'getVerif']);
+  Route::get('/tolak/{id}', [DashboardController::class,'getTolak']);
 });

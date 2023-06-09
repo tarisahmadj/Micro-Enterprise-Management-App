@@ -11,20 +11,28 @@ class pariwisata extends Model
 
     protected $table = 'pariwisatas';
 
-    public static function getKecamatan($kec){
-        $ARR[1] = 'SEMARANG';
-        $ARR[2] = 'GROBOGAN';
-        $ARR[3] = 'KENDAL';
-        $ARR[4] = 'UDINUS';
+    // public static function getKecamatan($kec){
+    //     $ARR[1] = 'SEMARANG';
+    //     $ARR[2] = 'GROBOGAN';
+    //     $ARR[3] = 'KENDAL';
+    //     $ARR[4] = 'UDINUS';
 
-        return $ARR[$kec];
+    //     return $ARR[$kec];
+    // }
+    // public static function getKelurahan($kel){
+    //     $ARR[1] = 'SEMARANG KULON';
+    //     $ARR[2] = 'GROBOGAN WETAN';
+    //     $ARR[3] = 'KENDAL KIDUL';
+    //     $ARR[4] = 'UDINUS LOR';
+
+    //     return $ARR[$kel] ;
+    // }
+
+    public function kecamatan(){
+        return $this->belongsTo(Kecamatan::class);
     }
-    public static function getKelurahan($kel){
-        $ARR[1] = 'SEMARANG KULON';
-        $ARR[2] = 'GROBOGAN WETAN';
-        $ARR[3] = 'KENDAL KIDUL';
-        $ARR[4] = 'UDINUS LOR';
-
-        return $ARR[$kel] ;
+    
+    public function kelurahan(){
+        return $this->belongsTo(Kelurahan::class, 'kelurahan_id', 'id');
     }
 }

@@ -57,16 +57,58 @@ class DashboardController extends Controller
 
     public function getVerif($id){
         
-        DB::table('usaha_usulan')->where('id',$id)->update(['status' => 2]);
-        $usaha = Usahausulan::all();
+        $usulan = Usahausulan::where('id', $id)->first();
+        $usulan->update(['status' => 2]);
+
+        Usaha::create([
+            'kabupaten_id' => $usulan->kabupaten_id,
+            'kecamatan_id' => $usulan->kecamatan_id,
+            'desa_id' => $usulan->desa_id,
+            'nama_bumdes' => $usulan->usaha_usulan,
+            'unit_usaha_prioritas' => $usulan->permasalahan_usaha_sebelum,
+        ]);
         
-        return view('usaha2/usaha2', [
-            'title' => 'usaha usulan',
-            'usaha' => $usaha,
-            'tgl'   => date('l, d F Y'),
+        return back()->with('success', 'Usulan Usaha berhasil diterima, Usulan usaha berhasil masuk ke Usaha berjalan');
+    }
+
+    public function getTolak($id){
+        
+        DB::table('usaha_usulan')->where('id',$id)->update(['status' => 3]);
+        
+        return back()->with('deleted', 'Usulan Usaha berhasil ditolak');
+    }
+
+    // Edit Profile
+    public function edit()
+    {
+        return view('content/akun', [
+            'title' => 'Akun Anda',
+            'akun'  => auth()->guard()->user(),
+            'tgl' => date('l, d F Y'),
         ]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name'      => 'required',
+            'email'     => 'required',
+        ]);
+
+        if (!$request->foto) {
+            $validatedData['foto'] = $request->oldFoto;
+        }
+
+        if (!$request->password) {
+            $validatedData['password'] = $request->oldPassword;
+        }
+
+        $validatedData['role_id'] = auth()->user()->role_id;
+
+        User::where('id', $id)->update($validatedData);
+
+        return back()->with('success', 'Data anda berhasil diubah');
+    }
     public function createAkun(){
         $data = User::get();
         return view('content/akun', [

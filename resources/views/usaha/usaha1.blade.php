@@ -24,9 +24,11 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
+            @cannot('user')
             <a href="/usaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usaha</a>
+            @endcannot
             <form action="/searchUsaha" method="get">
-              <input type="text" name="search" class="form-control" placeholder="Search Usaha..." aria-label="Search...">
+              <input type="text" name="search" class="form-control" placeholder="Search Bumdes..." aria-label="Search...">
             </form>
           </div>
           @if (session()->has('success'))
@@ -58,12 +60,14 @@
               <thead>
                 <tr>
                   <th scope="col">No</th>
-                  <th scope="col">Usaha Berjalan</th>
-                  <th scope="col">Omset Rata-rata</th>
-                  <th scope="col">Modal Usaha</th>
-                  @if ((Session::get('role_id')) == 1)
+                  <th scope="col">Kabupaten</th>
+                  <th scope="col">Kecamatan</th>
+                  <th scope="col">Kelurahan/Desa</th>
+                  <th scope="col">Nama Bumdes</th>
+                  <th scope="col">Unit Usaha Prioritas</th>
+                  @cannot('user')
                   <th scope="col">Aksi</th>
-                  @endif
+                  @endcannot
                 </tr>
               </thead>
               <tbody>
@@ -75,16 +79,18 @@
                   @foreach ($usaha as $item)
                     <tr>
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $item->usaha_berjalan }}</td>
-                      <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td>
-                      <td>Rp. {{ number_format($item->modal_usaha, 0, ',', '.') }}</td>
-                      @if ((Session::get('role_id')) == 1)
+                      <td>{{ $item->kabupaten->nama_kabupaten }}</td>
+                      <td>{{ $item->kecamatan->nama_kecamatan }}</td>
+                      <td>{{ $item->kelurahan->nama_desa }}</td>
+                      <td>{{ $item->nama_bumdes }}</td>
+                      <td>{{ $item->unit_usaha_prioritas }}</td>
+                      @cannot('user')
                       <td>
                         <!-- <a href="/usaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a> -->
                         <a href="/usaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
                       </td>
-                      @endif
+                      @endcannot
                     </tr>
                   @endforeach
                 @endif
