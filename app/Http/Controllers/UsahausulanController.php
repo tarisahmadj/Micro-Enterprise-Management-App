@@ -15,7 +15,7 @@ class UsahausulanController extends Controller
      */
     public function index()
     {
-        $usaha = Usahausulan::all();
+        $usaha = Usahausulan::where('usaha_usulan','!=','-')->where('usaha_usulan','!=','')->get();
         return view('usaha2/usaha2', [
             'title' => 'Usulan Usaha',
             'usaha' => $usaha,

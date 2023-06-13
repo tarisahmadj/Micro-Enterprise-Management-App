@@ -53,6 +53,7 @@ class UsahaController extends Controller
             'desa_id' => 'required',
             'nama_bumdes' => 'required',
             'unit_usaha_prioritas' => 'required',
+            'status' => 'required',
         ]);
 
         Usaha::create($validatedData);
@@ -102,6 +103,7 @@ class UsahaController extends Controller
             'desa_id' => 'required',
             'nama_bumdes' => 'required',
             'unit_usaha_prioritas' => 'required',
+            'status' => 'required',
         ]);
 
         Usaha::where('id', $id)->update($validatedData);
