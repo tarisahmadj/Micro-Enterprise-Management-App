@@ -20,6 +20,6 @@ class Usahausulan extends Model
     }
     
     public function kelurahan(){
-        return $this->belongsTo(Kelurahan::class, 'desa_id', 'id');
+        return $this->belongsTo(Kelurahan::class, 'desa_id', 'id_desa');
     }
 }
