@@ -61,10 +61,11 @@
                 <tr>
                   <th scope="col">No</th>
                   <th scope="col">Kabupaten</th>
-                  <th scope="col">Kecamatan</th>
+                  <!-- <th scope="col">Kecamatan</th> -->
                   <th scope="col">Kelurahan/Desa</th>
-                  <th scope="col">Nama Bumdes</th>
+                  <th scope="col-sm-">Nama Bumdes</th>
                   <th scope="col">Unit Usaha Prioritas</th>
+                  <th scope="col">status</th>
                   @cannot('user')
                   <th scope="col">Aksi</th>
                   @endcannot
@@ -80,10 +81,25 @@
                     <tr>
                       <td>{{ $loop->iteration }}</td>
                       <td>{{ $item->kabupaten->nama_kabupaten }}</td>
-                      <td>{{ $item->kecamatan->nama_kecamatan }}</td>
+                      <!-- <td>
+                        '{{' //$item->kecamatan->nama_kecamatan  '}}'
+                      </td> -->
                       <td>{{ $item->kelurahan->nama_desa }}</td>
                       <td>{{ $item->nama_bumdes }}</td>
                       <td>{{ $item->unit_usaha_prioritas }}</td>
+                      @if ($item->status == 2)
+                        <td>
+                          <p class="badge badge-success">Berjalan</p>
+                        </td>
+                      @elseif ($item->status == 1)
+                        <td>
+                          <p class="badge badge-warning">Mengusulkan</p>
+                        </td>
+                      @elseif ($item->status == 3)
+                        <td>
+                          <p class="badge badge-warning">Ditolak</p>
+                        </td>
+                      @endif
                       @cannot('user')
                       <td>
                         <!-- <a href="/usaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a> -->

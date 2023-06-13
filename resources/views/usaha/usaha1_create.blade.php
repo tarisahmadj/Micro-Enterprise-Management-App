@@ -63,6 +63,16 @@
                 </div>
               @enderror
             </div>
+            @cannot('user')
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status" class="form-control" required>
+                    <option value="1">Berjalan</option>
+                    <option value="2">Mengusulkan</option>
+                    <option value="3">Ditolak</option>
+                </select>
+            </div>
+            @endcannot
             <div class="mt-3">
               <a href="/usaha" class="btn btn-primary">Kembali</a>
               <button type="submit" class="btn btn-success">Simpan</button>
