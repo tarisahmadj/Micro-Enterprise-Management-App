@@ -31,8 +31,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ml-auto">
-              <a class="nav-link {{ Request::is('/') ? 'active' : '' }} font-weight-bold text-lg" href="/">Beranda <span class="sr-only">(current)</span></a>
-              <a class="nav-link font-weight-bold text-lg" href="#wisata">Wisata Desa</a>
+              <!-- <a class="nav-link {{ Request::is('/') ? 'active' : '' }} font-weight-bold text-lg" href="/">Beranda <span class="sr-only">(current)</span></a> -->
+              <!-- <a class="nav-link font-weight-bold text-lg" href="#wisata">Wisata Desa</a> -->
               <a href="/login" class="btn btn-sm btn-primary my-auto font-weight-bold">Login</a>
             </div>
           </div>

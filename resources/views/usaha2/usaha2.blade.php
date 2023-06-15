@@ -27,9 +27,9 @@
             @cannot('user')
             <a href="/usulusaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usulan Usaha</a>
             @endcannot
-            <form action="/searchUsulan" method="get">
+            <!-- <form action="/searchUsulan" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Usulan..." aria-label="Search...">
-            </form>
+            </form> -->
           </div>
           @if (session()->has('success'))
           <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -67,6 +67,7 @@
                 </tr>
               </thead>
               <tbody>
+                <?php $x = 1;?>
                 @if ($usaha->first() == null)
                   <tr>
                     <td colspan="6" class="text-center">Tidak ada usulan usaha</td>
@@ -74,28 +75,36 @@
                 @else
                   @foreach ($usaha as $item)
                     <tr>
-                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $x++ }}</td>
                       <td>{{ $item->usaha_usulan }}</td>
                       <td>
                         <img src="../../custom/{{ $item->scan_surat }}" alt="scan-surat" width="100px" class="rounded">
                       </td>
                       {{-- <td>{{ $item->permasalahan_usaha_sebelum }}</td> --}}
+                      <!-- <td>
+                        
+                        <?php //echo $item->status ?>
+                      </td> -->
                       @if ($item->status == 2)
                         <td>
                           <p class="badge badge-success">Disetujui</p>
                         </td>
-                      @else
+                      @elseif ($item->status == 1)
                         <td>
                           <p class="badge badge-warning">Mengusulkan</p>
                         </td>
+                        @else
+                        <td>
+                          <p class="badge badge-danger">Ditolak</p>
+                        </td>
                       @endif
                       <td>
-                        <a href="/usulusaha/{{ $item->id }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
+                        <a href="/usulusaha/{{ $item->ID }}" class="btn btn-info btn-sm"><i class="ti-eye"></i></a>
                         @cannot('user')
-                            <a href="/verif/{{ $item->id }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
-                            <a href="/tolak/{{ $item->id }}" class="btn btn-dark btn-sm"><i class="ti-close"></i></a>
-                            <a href="/usulusaha/{{ $item->id }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
-                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->id}})"><i class="ti-trash"></i></button>
+                            <a href="/verif/{{ $item->ID }}" class="btn btn-success btn-sm"><i class="ti-check"></i></a>
+                            <a href="/tolak/{{ $item->ID }}" class="btn btn-dark btn-sm"><i class="ti-close"></i></a>
+                            <a href="/usulusaha/{{ $item->ID }}/edit" class="btn btn-warning btn-sm"><i class="ti-pencil-alt"></i></a>
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" onclick="handleDelete({{ $item->ID}})"><i class="ti-trash"></i></button>
                         @endcannot
                       </td>
                     </tr>
@@ -103,6 +112,14 @@
                 @endif
               </tbody>
             </table>
+            <style type="text/css">
+                .pagination li{
+                  float: left;
+                  list-style-type: none;
+                  margin:5px;
+                }
+              </style>
+              {{ $usaha->links() }}
           </div>
           {{-- <div class="d-flex">
             <div class=" mt-3 mx-auto">

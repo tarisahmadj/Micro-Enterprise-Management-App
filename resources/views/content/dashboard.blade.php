@@ -22,7 +22,7 @@
     <div class="row">
       <div class="col-md-6 grid-margin transparent">
         <div class="row">
-          <div class="col-lg-6 stretch-card transparent">
+          <div class="col-lg-7 stretch-card transparent">
             <div class="card card-tale mr-4">
               <div class="card-body">
                 <p class="mb-4">Usaha Berjalan</p>
@@ -36,17 +36,17 @@
                 <p class="fs-30 mb-2">{{ $usulan->count() }} Usulan</p>
               </div>
             </div>
-            <div class="card card-light-blue mr-4">
-              <div class="card-body">
-                <p class="mb-4">Pariwisata</p>
-                <p class="fs-30 mb-2">{{ $pariwisata }}</p>
-                {{-- @if ($backupnext == 'no')
+            <!-- <div class="card card-light-blue mr-4">
+              <div class="card-body"> -->
+                <!-- <p class="mb-4">Pariwisata</p>
+                <p class="fs-30 mb-2"> $pariwisata </p> -->
+                <!-- {{-- @if ($backupnext == 'no')
                   <p>Next: Tidak Terjadwal!</p>
                 @else
                   <p>Next: {{ $backupnext->format('d M Y') }}</p>
-                @endif --}}
-              </div>
-            </div>
+                @endif --}} -->
+              <!-- </div>
+            </div> -->
             <div class="card card-light-danger">
               <div class="card-body">
                 <p class="mb-4">Total User</p>
@@ -83,7 +83,7 @@
                   @else
                     @foreach ($usaha as $item)
                       <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->ID }}</td>
                         <td class="font-weight-bold">{{ $item->nama_bumdes }}</td>
                         <td class="font-weight-bold">{{ $item->unit_usaha_prioritas }}</td>
                         {{-- <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td> --}}
@@ -93,6 +93,14 @@
                   @endif
                 </tbody>
               </table>
+              <style type="text/css">
+                .pagination li{
+                  float: left;
+                  list-style-type: none;
+                  margin:5px;
+                }
+              </style>
+              {{ $usaha->links() }}
             </div>
           </div>
         </div>
@@ -124,7 +132,7 @@
                   @else
                     @foreach ($usulan as $item)
                       <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $item->ID }}</td>
                         <td>{{ $item->usaha_usulan }}</td>
                         <td>{{ $item->permasalahan_usaha_sebelum }}</td>
                         @if ($item->status == 2)
@@ -141,6 +149,7 @@
                   @endif
                 </tbody>
               </table>
+              {{ $usulan->links() }}
             </div>
           </div>
         </div>

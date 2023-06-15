@@ -14,7 +14,7 @@
     <div class="col-md-12 grid-margin">
       <div class="card p-4">
         <div class="card-body">
-          <form method="POST" action="/usulusaha/{{ $usaha->id }}" enctype="multipart/form-data">
+          <form method="POST" action="/usulusaha/{{ $usaha->ID }}" enctype="multipart/form-data">
             @method('put')
             @csrf
             <div class="form-row">
@@ -41,7 +41,7 @@
                 <select id="desa_id" name="desa_id" class="form-control" required>
                   <option selected hidden value="{{ $usaha->desa_id }}">{{ $usaha->kelurahan->nama_desa }}</option>
                   @foreach ($kelurahan as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama_desa }}</option>
+                    <option value="{{ $item->id_desa }}">{{ $item->nama_desa }}</option>
                   @endforeach
                 </select>
               </div>

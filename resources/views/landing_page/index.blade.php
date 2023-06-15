@@ -2,13 +2,13 @@
 @section('contentLandingPage')
     {{-- Jumbotron --}}
     <div class="bg-image rounded-3 d-flex" style="
-      background-image: url(../../template/images/banner.jpg);
+      background-image: url(../../template/images/carousel/profil4.jpg);
       height: 626px;
       background-size: cover;
     ">
       <div class="container align-items-center my-auto">
         <h1 class="mb-3 font-weight-bold text-white">Aplikasi E-Bumdes <br> oleh Dispermades Grobogan</h1>
-        <h4 class="mb-3 font-weight-normal text-white">Permudah pengelolaan wisata desa dengan aplikasi E-Bumdes</h4>
+        <h4 class="mb-3 font-weight-normal text-white">Bersama desa membangun negeri</h4>
       </div>
     </div>
     {{-- End of Jumbotron --}}
@@ -23,11 +23,11 @@
     <div class="row my-5">
       <div class="col-6">
         <h2 class="font-weight-bold my-4">E-Bumdes</h2>
-        <h4>Aplikasi yang digunakan untuk <span class="text-warning">pengelolaan wisata</span> pada seluruh Kabupaten Grobogan.</h4>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum est beatae magnam ea nihil ab ducimus similique atque veritatis illo. Sunt ratione voluptates sint. Sunt, eius voluptates inventore earum nobis adipisci labore facilis deleniti libero impedit eligendi veniam excepturi modi praesentium fugiat? Asperiores, corporis consequatur aliquam officia et blanditiis ratione eos, sequi modi nesciunt repellendus soluta pariatur, natus quo reprehenderit eveniet doloremque dolorum sint vitae assumenda necessitatibus. Quam aperiam eveniet rem eum suscipit mollitia.</p>
+        <h4>Aplikasi yang digunakan untuk <span class="text-warning"> mengelola data BUMDES </span> pada seluruh Kabupaten Grobogan.</h4>
+        <p>Aplikasi ini dirancang untuk membatu proses pengeloalaan data Bumdes yang ada di kabupaten grobogan. Sehingga data yang dimiliki akan terkomputerisasi dan tersimpan dengan baik. Pada aplikasi ini ber isisakn jenis usaha yang dijalankan pada setiap desa serta jenis usaha yang akan diusulkan kedepannya.</p>
       </div>
       <div class="col-6 d-flex">
-        <img src="../../template/images/carousel/banner_3.jpg" alt="gambar aplikasi" width="100%" class="mx-auto rounded">
+        <img src="../../template/images/carousel/profil.jpeg" alt="gambar aplikasi" width="100%" class="mx-auto rounded">
       </div>
     </div>
   </div>
@@ -42,11 +42,11 @@
     </div>
     <div class="row my-5">
       <div class="col-6 d-flex">
-        <img src="../../template/images/carousel/banner_3.jpg" alt="gambar sekolah" width="100%" class="mx-auto rounded">
+        <img src="../../template/images/carousel/profil2.png" alt="gambar sekolah" width="100%" class="mx-auto rounded">
       </div>
       <div class="col-6">
         <h3 class="font-weight-bold my-2">Dinas Pemberdayaan Masyarakat, Desa Kabupaten Grobogan</h3>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum est beatae magnam ea nihil ab ducimus similique atque veritatis illo. Sunt ratione voluptates sint. Sunt, eius voluptates inventore earum nobis adipisci labore facilis deleniti libero impedit eligendi veniam excepturi modi praesentium fugiat? Asperiores, corporis consequatur aliquam officia esse et blanditiis ratione eos, sequi modi nesciunt repellendus soluta pariatur, natus quo reprehenderit eveniet doloremque dolorum sint vitae assumenda necessitatibus. Quam aperiam eveniet rem eum suscipit mollitia.</p>
+        <p>Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Grobogan mempunyai tugas pokok melaksanakan urusan pemerintahan daerah berdasarkan asas otonomi daerah dan tugas pembantuan di bidang pemberdayaan masyarakat dan desa. Dinas ini berdomisili di Jalan Gunung Muria No. 4 Purwodadi, Purwodadi, Grobogan, Jawa Tengah 58111.</p>
       </div>
     </div>
   </div>
@@ -54,7 +54,7 @@
 
   {{-- Section Wisata Kabupaten Grobogan --}}
   {{-- style="background-color: #E5E7EB;" --}}
-  <section id="wisata">
+  <!-- <section id="wisata">
     <div class="container py-5" id="#wisata">
       <div class="row my-5">
         <div class="col-12">
@@ -88,10 +88,10 @@
         <div class=" mt-3 mx-auto">
           {{ $pariwisata->links() }}
         </div>
-      </div>
+      </div> -->
     <!-- <div style = "margin : 5px;list-style-type: none;float: left;"> -->
     <!-- </div> -->
-  </div>
+  <!--</div>-->
   {{-- End of Section Wisata Kabupaten Grobogan --}}
   
 @endsection

@@ -40,7 +40,7 @@
                 <select id="desa_id" name="desa_id" class="form-control" required>
                   <option selected hidden disabled>--Pilih Kelurahan/Desa--</option>
                   @foreach ($kelurahan as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama_desa }}</option>
+                    <option value="{{ $item->id_desa }}">{{ $item->nama_desa }}</option>
                   @endforeach
                 </select>
               </div>

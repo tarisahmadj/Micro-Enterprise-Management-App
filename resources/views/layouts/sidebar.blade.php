@@ -15,7 +15,7 @@
       </a>
       <div class="collapse" id="desa">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="/usaha">Usaha Berjalan</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/usaha">Daftar Usaha</a></li>
           <li class="nav-item"> <a class="nav-link" href="/usulusaha">Usulan Usaha</a></li>
         </ul>
       </div>
