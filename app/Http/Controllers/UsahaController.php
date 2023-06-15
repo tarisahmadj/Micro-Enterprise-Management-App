@@ -15,7 +15,7 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->get();
+        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('status','!=',1)->paginate(10);
         $tgl = date('l, d F Y');
 
         return view('usaha/usaha1', [
@@ -78,7 +78,7 @@ class UsahaController extends Controller
      */
     public function edit($id)
     {
-        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('id',$id)->first();
+        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('ID',$id)->first();
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
         $kelurahan = Kelurahan::all();
@@ -106,7 +106,7 @@ class UsahaController extends Controller
             'status' => 'required',
         ]);
 
-        Usaha::where('id', $id)->update($validatedData);
+        Usaha::where('ID', $id)->update($validatedData);
 
         return redirect('/usaha')->with('success', 'Bumdes berhasil diupdate');
     }
@@ -117,7 +117,7 @@ class UsahaController extends Controller
     public function destroy($id)
     {
         // Delete usaha
-        Usaha::destroy($id);
+        Usaha::where('ID',$id)->delete($id);
 
         return redirect('/usaha')->with('deleted', 'Bumdes berhasil dihapus');
     }

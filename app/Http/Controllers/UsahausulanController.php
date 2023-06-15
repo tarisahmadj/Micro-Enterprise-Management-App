@@ -15,7 +15,7 @@ class UsahausulanController extends Controller
      */
     public function index()
     {
-        $usaha = Usahausulan::where('usaha_usulan','!=','-')->where('usaha_usulan','!=','')->get();
+        $usaha = Usahausulan::where('usaha_usulan','!=','-')->where('status',1)->paginate(10);
         return view('usaha2/usaha2', [
             'title' => 'Usulan Usaha',
             'usaha' => $usaha,
@@ -69,7 +69,7 @@ class UsahausulanController extends Controller
      */
     public function show($id)
     {
-        $usaha = Usahausulan::with(['kabupaten', 'kecamatan', 'kelurahan'])->where('id',$id)->first();
+        $usaha = Usahausulan::with(['kabupaten', 'kecamatan', 'kelurahan'])->where('ID',$id)->first();
         return view('usaha2/usaha2_detail', [
             'title' => 'Detail Usulan',
             'usaha' => $usaha,
@@ -81,7 +81,7 @@ class UsahausulanController extends Controller
      */
     public function edit($id)
     {
-        $usaha = Usahausulan::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('id',$id)->first();
+        $usaha = Usahausulan::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('ID',$id)->first();
         $kabupaten = Kabupaten::all();
         $kecamatan = Kecamatan::all();
         $kelurahan = Kelurahan::all();
@@ -98,7 +98,8 @@ class UsahausulanController extends Controller
      * Update the specified resource in storage.
      */
     public function update($id, Request $request)
-    {
+    {   
+        // dd($request);
         $validatedData = $request->validate([
             'kabupaten_id' => 'required',
             'kecamatan_id' => 'required',
@@ -117,7 +118,7 @@ class UsahausulanController extends Controller
             $request->scan_surat->move(public_path('custom'), $validatedData['scan_surat']);
         }
 
-        Usahausulan::where('id', $id)->update($validatedData);
+        Usahausulan::where('ID', $id)->update($validatedData);
         // if(! $validatedData['scan_surat']){
         //     Usahausulan::destroy($id);
         // }
@@ -131,7 +132,7 @@ class UsahausulanController extends Controller
     public function destroy($id)
     {
         // Delete usaha
-        Usahausulan::destroy($id);
+        Usahausulan::where('ID',$id)->delete($id);
 
         return redirect('/usulusaha')->with('deleted', 'Usulan Usaha berhasil dihapus');
     }

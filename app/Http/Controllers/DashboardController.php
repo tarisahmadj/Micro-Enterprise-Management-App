@@ -2,34 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Users;
 use App\Models\Usaha;
 use App\Models\pariwisata;
 use App\Models\Usahausulan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
     public function index(){
-        $usaha = Usaha::latest()->get();
-        $usulan_usaha = Usahausulan::latest()->get();
-        $pariwisata = pariwisata::latest()->count();
-        $user = User::where('role_id', 0)->count();
+        $usaha = Usaha::paginate(10);
+        $usulan_usaha = Usahausulan::paginate(10);
+        // $pariwisata = pariwisata::latest()->count();
+        $user = Users::count();
 
         return view('content/dashboard', [
             'title' => 'Dashboard',
             'usaha' => $usaha,
             'usulan' => $usulan_usaha,
-            'pariwisata' => $pariwisata,
+            // 'pariwisata' => $pariwisata,
             'user' => $user,
         ]);
     }
 
     public function getDownload($fileId)
     {   
-        $scan = Usahausulan::where('id',$fileId)->first();
+        $scan = Usahausulan::where('ID',$fileId)->first();
         // $number_of_files = isset($file);
         // if ($number_of_files) {
         //     // Push all the files in a zip and send the zip as download
@@ -57,8 +58,9 @@ class DashboardController extends Controller
 
     public function getVerif($id){
         
-        $usulan = Usahausulan::where('id', $id)->first();
-        $usulan->update(['status' => 2]);
+        $query = Usahausulan::where('ID', $id)->update(['status' => 2]);
+        $usulan = Usahausulan::where('ID', $id)->first();
+        // $usulan->update(['status' => 2]);
 
         Usaha::create([
             'kabupaten_id' => $usulan->kabupaten_id,
@@ -66,6 +68,7 @@ class DashboardController extends Controller
             'desa_id' => $usulan->desa_id,
             'nama_bumdes' => $usulan->usaha_usulan,
             'unit_usaha_prioritas' => $usulan->permasalahan_usaha_sebelum,
+            'status'=>2,
         ]);
         
         return back()->with('success', 'Usulan Usaha berhasil diterima, Usulan usaha berhasil masuk ke Usaha berjalan');
@@ -73,16 +76,18 @@ class DashboardController extends Controller
 
     public function getTolak($id){
         
-        DB::table('usaha_usulan')->where('id',$id)->update(['status' => 3]);
+        $query = Usahausulan::where('ID', $id)->update(['status' => 3]);
         
         return back()->with('deleted', 'Usulan Usaha berhasil ditolak');
     }
 
     // Edit Profile
-    public function edit()
+    public function edit($id)
     {
-        return view('content/akun', [
+        $data = Users::where('id',$id)->first(); 
+        return view('content/edit_akun', [
             'title' => 'Akun Anda',
+            'data' => $data,
             'akun'  => auth()->guard()->user(),
             'tgl' => date('l, d F Y'),
         ]);
@@ -90,45 +95,11 @@ class DashboardController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'name'      => 'required',
-            'email'     => 'required',
-        ]);
-
-        if (!$request->foto) {
-            $validatedData['foto'] = $request->oldFoto;
-        }
-
-        if (!$request->password) {
-            $validatedData['password'] = $request->oldPassword;
-        }
-
-        $validatedData['role_id'] = auth()->user()->role_id;
-
-        User::where('id', $id)->update($validatedData);
-
-        return back()->with('success', 'Data anda berhasil diubah');
-    }
-    public function createAkun(){
-        $data = User::get();
-        return view('content/akun', [
-            'title' => 'akun',
-            'data' => $data,
-            'tgl' => date('l, d F Y'),
-        ]);
-    }
-    public function getAkun($id){
-        return view('content/create_akun', [
-            'title' => 'buat akun',
-            'tgl' => date('l, d F Y'),
-        ]);
-    }
-    public function postAkun(Request $request){
         $nama = $request->nama;
         $email = $request->email;
         $password = $request->password;
         $password2 = $request->password2;
-        $role = $request->role;
+        $role_id = $request->role_id;
         if ($password != $password2) {
             return view('content/create_akun', [
                 'title' => 'buat akun',
@@ -137,17 +108,99 @@ class DashboardController extends Controller
                 'ket' => 'password tidak sama, silahkan ulangi lagi!'
             ]);
         } else {
-            $user = new User;
+            $user = DB::table('users')->where('id', $id)
+            ->update([
+            // $user = new Users;
+            'name' => $nama,
+            'email' => $email,
+            // $user->email_verified_at = date('Y-m-d H:i:s');
+            'password' => Hash::make('password', [$password]),
+            'role_id' => $role_id,
+            'remember_token' => '',
+            ]);
+            // $user->save();
+        }
+        $data = Users::get();
+        return view('content/akun', [
+            'title' => 'buat akun',
+            'data' => $data,
+            'tgl' => date('l, d F Y'),
+        ]);
+        // $validatedData = $request->validate([
+        //     'name'      => 'required',
+        //     'email'     => 'required',
+        // ]);
+
+        // if (!$request->foto) {
+        //     $validatedData['foto'] = $request->oldFoto;
+        // }
+
+        // if (!$request->password) {
+        //     $validatedData['password'] = $request->oldPassword;
+        // }
+
+        // $validatedData['role_id'] = auth()->user()->role_id;
+
+        // User::where('ID', $id)->update($validatedData);
+
+        // return back()->with('success', 'Data anda berhasil diubah');
+    }
+    public function createAkun(){
+        $data = Users::get();
+        return view('content/akun', [
+            'title' => 'akun',
+            'data' => $data,
+            'tgl' => date('l, d F Y'),
+        ]);
+    }
+    public function getAkun(){
+        return view('content/create_akun', [
+            'title' => 'buat akun',
+            'tgl' => date('l, d F Y'),
+        ]);
+    }
+    public function hapus($id)
+    {
+        // Delete usaha
+        Users::where('id',$id)->delete($id);
+
+        $data = Users::get();
+        return view('content/akun', [
+            'title' => 'buat akun',
+            'data' => $data,
+            'tgl' => date('l, d F Y'),
+            'ket' => 'password Berhasil Dihapus'
+        ]);;
+    }
+        
+    public function postAkun(Request $request){
+        $nama = $request->nama;
+        $email = $request->email;
+        $password = $request->password;
+        $password2 = $request->password2;
+        $role_id = $request->role_id;
+        if ($password != $password2) {
+            return view('content/create_akun', [
+                'title' => 'buat akun',
+                'nama' => $nama,
+                'email' => $email,
+                'ket' => 'password tidak sama, silahkan ulangi lagi!'
+            ]);
+        } else {
+            $user = new Users;
             $user->name = $nama;
             $user->email = $email;
-            $user->email_verified_at = date('Y-m-d H:i:s');
-            $user->password = $password;
-            $user->role_id = $role;
+            // $user->email_verified_at = date('Y-m-d H:i:s');
+            $user->password = Hash::make('password', [$password]);
+            $user->role_id = $role_id;
             $remember_token = '';
             $user->save();
         }
+        $data = Users::get();
         return view('content/akun', [
             'title' => 'buat akun',
+            'data' => $data,
+            'tgl' => date('l, d F Y'),
         ]);
     }
     // public function get_edit_Akun($id){
