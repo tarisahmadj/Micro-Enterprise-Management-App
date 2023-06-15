@@ -36,8 +36,11 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
   // Update Profile
-  Route::get('/akun', [DashboardController::class, 'edit']);
+  Route::get('/getcreateuser/{id}', [DashboardController::class, 'edit']);
   Route::put('/akun/{id}', [DashboardController::class, 'update']);
+
+  // Update Profile
+  Route::get('/hapusakun/{id}', [DashboardController::class, 'hapus']);
   
   // buat akun
   Route::get('/akun', [DashboardController::class, 'createAkun'])->name('akun');
