@@ -25,7 +25,8 @@
     <div class="col-md-12 grid-margin">
       <div class="card p-4">
         <div class="card-body">
-          <form method="POST" action="/createuser">
+          <form method="POST" action="/akun/{{ $data->id }}">
+            @method('put')
             @csrf
             <div class="form-group">
               <label for="nama">Nama</label>

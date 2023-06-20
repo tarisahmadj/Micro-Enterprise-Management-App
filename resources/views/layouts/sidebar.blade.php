@@ -28,7 +28,9 @@
       </a>
       <div class="collapse" id="tables">
         <ul class="nav flex-column sub-menu">
+        @cannot('user')
           <li class="nav-item"> <a class="nav-link" href="/akun">tambah user</a></li>
+        @endcannot
           <li class="nav-item"> 
             <form action="/logout" method="POST" class="nav-link">
               @csrf

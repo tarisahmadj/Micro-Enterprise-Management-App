@@ -82,7 +82,7 @@
                         <td>
                           <p class="badge badge-info">Admin</p>
                         </td>
-                      @elseif ($item->status == 2)
+                      @elseif ($item->role_id == 2)
                         <td>
                           <p class="badge badge-info">Admin-Dinas</p>
                         </td>

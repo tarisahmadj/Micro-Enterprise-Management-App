@@ -23,7 +23,7 @@
     <div class="row my-5">
       <div class="col-6">
         <h2 class="font-weight-bold my-4">E-Bumdes</h2>
-        <h4>Aplikasi yang digunakan untuk <span class="text-warning"> mengelola data BUMDES </span> pada seluruh Kabupaten Grobogan.</h4>
+        <h4>Aplikasi yang digunakan untuk mengelola data BUMDES pada seluruh Kabupaten Grobogan.</h4>
         <p>Aplikasi ini dirancang untuk membatu proses pengeloalaan data Bumdes yang ada di kabupaten grobogan. Sehingga data yang dimiliki akan terkomputerisasi dan tersimpan dengan baik. Pada aplikasi ini ber isisakn jenis usaha yang dijalankan pada setiap desa serta jenis usaha yang akan diusulkan kedepannya.</p>
       </div>
       <div class="col-6 d-flex">

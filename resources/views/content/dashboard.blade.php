@@ -76,6 +76,7 @@
                   </tr>  
                 </thead>
                 <tbody>
+                  <?php $x =1 ?>
                   @if ($usaha->first() == null)
                     <tr>
                       <td colspan="4" class="text-center">Belum ada bumdes</td>
@@ -83,7 +84,7 @@
                   @else
                     @foreach ($usaha as $item)
                       <tr>
-                        <td>{{ $item->ID }}</td>
+                        <td>{{ $x++ }}</td>
                         <td class="font-weight-bold">{{ $item->nama_bumdes }}</td>
                         <td class="font-weight-bold">{{ $item->unit_usaha_prioritas }}</td>
                         {{-- <td>Rp. {{ number_format($item->average_omset, 0, ',', '.') }}</td> --}}

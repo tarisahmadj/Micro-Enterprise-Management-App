@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 class DashboardController extends Controller
 {
     public function index(){
-        $usaha = Usaha::paginate(10);
+        $usaha = Usaha::orderBy('unit_usaha_prioritas','DESC')->paginate(10);
         $usulan_usaha = Usahausulan::paginate(10);
         // $pariwisata = pariwisata::latest()->count();
         $user = Users::count();
@@ -114,7 +114,7 @@ class DashboardController extends Controller
             'name' => $nama,
             'email' => $email,
             // $user->email_verified_at = date('Y-m-d H:i:s');
-            'password' => Hash::make('password', [$password]),
+            'password' => Hash::make($password),
             'role_id' => $role_id,
             'remember_token' => '',
             ]);
@@ -191,9 +191,9 @@ class DashboardController extends Controller
             $user->name = $nama;
             $user->email = $email;
             // $user->email_verified_at = date('Y-m-d H:i:s');
-            $user->password = Hash::make('password', [$password]);
+            $user->password = Hash::make([strval($password)]);
             $user->role_id = $role_id;
-            $remember_token = '';
+            // $remember_token = '';
             $user->save();
         }
         $data = Users::get();
