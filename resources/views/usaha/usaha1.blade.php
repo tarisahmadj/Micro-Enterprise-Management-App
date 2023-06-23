@@ -24,9 +24,7 @@
       <div class="card p-4">
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
-            @cannot('user')
             <a href="/usaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usaha</a>
-            @endcannot
             <!-- <form action="/searchUsaha" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Bumdes..." aria-label="Search...">
             </form> -->
