@@ -15,7 +15,7 @@ class UsahaController extends Controller
      */
     public function index()
     {
-        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('status','!=',1)->orderBy('unit_usaha_prioritas','desc')->paginate(10);
+        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('status','!=',1)->paginate(10);
         $tgl = date('l, d F Y');
 
         return view('usaha/usaha1', [
