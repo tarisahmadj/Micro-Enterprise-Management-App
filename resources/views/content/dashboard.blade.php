@@ -26,14 +26,14 @@
             <div class="card card-tale mr-4">
               <div class="card-body">
                 <p class="mb-4">Usaha Berjalan</p>
-                <p class="fs-30 mb-2">{{ $usaha->count() }}</p>
+                <p class="fs-30 mb-2">{{ $usaha1->count() }}</p>
                 {{-- <p>+{{ $dokumen30 }} dokumen (Bulan ini)</p> --}}
               </div>
             </div>
             <div class="card card-dark-blue mr-4">
               <div class="card-body">
                 <p class="mb-4">Usulan Usaha</p>
-                <p class="fs-30 mb-2">{{ $usulan->count() }} Usulan</p>
+                <p class="fs-30 mb-2">{{ $usulan1->count() }} Usulan</p>
               </div>
             </div>
             <!-- <div class="card card-light-blue mr-4">
@@ -76,7 +76,7 @@
                   </tr>  
                 </thead>
                 <tbody>
-                  <?php $x =1 ?>
+                  <?php $x =1; $y =1; ?>
                   @if ($usaha->first() == null)
                     <tr>
                       <td colspan="4" class="text-center">Belum ada bumdes</td>
@@ -133,7 +133,7 @@
                   @else
                     @foreach ($usulan as $item)
                       <tr>
-                        <td>{{ $item->ID }}</td>
+                        <td>{{ $y++ }}</td>
                         <td>{{ $item->usaha_usulan }}</td>
                         <td>{{ $item->permasalahan_usaha_sebelum }}</td>
                         @if ($item->status == 2)

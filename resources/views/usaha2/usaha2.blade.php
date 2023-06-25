@@ -91,7 +91,7 @@
                         <td>
                           <p class="badge badge-warning">Mengusulkan</p>
                         </td>
-                        @else
+                      @elseif ($item->status == 3)
                         <td>
                           <p class="badge badge-danger">Ditolak</p>
                         </td>

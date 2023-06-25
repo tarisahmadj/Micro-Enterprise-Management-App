@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use App\Models\Usaha;
+use App\Models\Kelurahan;
 use App\Models\pariwisata;
 use App\Models\Usahausulan;
 use Illuminate\Http\Request;
@@ -14,14 +15,18 @@ use Illuminate\Support\Facades\Hash;
 class DashboardController extends Controller
 {
     public function index(){
-        $usaha = Usaha::orderBy('unit_usaha_prioritas','DESC')->paginate(10);
-        $usulan_usaha = Usahausulan::paginate(10);
+        $usaha1 = Usaha::get();
+        $usaha = Usaha::orderBy('updated_at','DESC')->paginate(10);
+        $usulan_usaha1 = Usahausulan::get();
+        $usulan_usaha = Usahausulan::orderBy('status')->paginate(10);
         // $pariwisata = pariwisata::latest()->count();
         $user = Users::count();
 
         return view('content/dashboard', [
             'title' => 'Dashboard',
+            'usaha1' => $usaha1,
             'usaha' => $usaha,
+            'usulan1' => $usulan_usaha1,
             'usulan' => $usulan_usaha,
             // 'pariwisata' => $pariwisata,
             'user' => $user,
@@ -60,14 +65,15 @@ class DashboardController extends Controller
         
         $query = Usahausulan::where('ID', $id)->update(['status' => 2]);
         $usulan = Usahausulan::where('ID', $id)->first();
+        $usaha = Usaha::where('desa_id',$usulan['desa_id'])->first()->nama_bumdes;
         // $usulan->update(['status' => 2]);
 
         Usaha::create([
             'kabupaten_id' => $usulan->kabupaten_id,
             'kecamatan_id' => $usulan->kecamatan_id,
             'desa_id' => $usulan->desa_id,
-            'nama_bumdes' => $usulan->usaha_usulan,
-            'unit_usaha_prioritas' => $usulan->permasalahan_usaha_sebelum,
+            'nama_bumdes' => $usaha,
+            'unit_usaha_prioritas' => $usulan->usaha_usulan,
             'status'=>2,
         ]);
         
@@ -116,7 +122,6 @@ class DashboardController extends Controller
             // $user->email_verified_at = date('Y-m-d H:i:s');
             'password' => Hash::make($password),
             'role_id' => $role_id,
-            'remember_token' => '',
             ]);
             // $user->save();
         }
@@ -191,7 +196,7 @@ class DashboardController extends Controller
             $user->name = $nama;
             $user->email = $email;
             // $user->email_verified_at = date('Y-m-d H:i:s');
-            $user->password = Hash::make([strval($password)]);
+            $user->password = Hash::make($password);
             $user->role_id = $role_id;
             // $remember_token = '';
             $user->save();

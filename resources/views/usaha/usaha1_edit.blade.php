@@ -14,7 +14,7 @@
     <div class="col-md-12 grid-margin">
       <div class="card">
         <div class="card-body m-3">
-          <form method="POST" action="/usaha/{{ $usaha->ID }}">
+          <form method="POST" action="{{ route('usaha.update', $usaha->ID) }}">
             @method('put')
             @csrf
             <div class="form-row">
@@ -68,7 +68,7 @@
             <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" name="status" class="form-control" required>
-                    <option value="1">Berjalan</option>
+                    <option value="2">Berjalan</option>
                     <!-- <option value="2">Mengusulkan</option> -->
                     <option value="3">Ditolak</option>
                 </select>

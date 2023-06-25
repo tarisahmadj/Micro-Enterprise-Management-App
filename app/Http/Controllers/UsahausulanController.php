@@ -15,7 +15,7 @@ class UsahausulanController extends Controller
      */
     public function index()
     {
-        $usaha = Usahausulan::where('usaha_usulan','!=','-')->where('status',1)->paginate(10);
+        $usaha = Usahausulan::where('usaha_usulan','!=','-')->orderBy('status')->paginate(10);
         return view('usaha2/usaha2', [
             'title' => 'Usulan Usaha',
             'usaha' => $usaha,
