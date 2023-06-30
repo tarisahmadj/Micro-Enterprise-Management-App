@@ -67,7 +67,7 @@
             <div class="form-group">
                 <label for="status">Status</label>
                 <select id="status" name="status" class="form-control" required>
-                    <option value="1">Berjalan</option>
+                    <option value="2">Berjalan</option>
                     <!-- <option value="2">Mengusulkan</option> -->
                     <option value="3">Ditolak</option>
                 </select>
