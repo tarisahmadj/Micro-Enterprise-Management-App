@@ -54,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
   
   //Usaha Usulan
   Route::resource('/usulusaha', UsahausulanController::class);
-  Route::get('/searchUsulan', [UsahaController::class, 'searchUsulan']);
+  Route::get('/searchUsulan', [UsahausulanController::class, 'searchUsulan']);
 
   Route::get('/files/download/{fileId}', [DashboardController::class,'getDownload']);
   Route::get('/verif/{id}', [DashboardController::class,'getVerif']);

@@ -125,12 +125,27 @@ class UsahaController extends Controller
     public function searchUsaha(Request $request){
         $keyword = $request->search;
 
-        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->where('nama_bumdes', 'like', "%" . $keyword . "%")->get();
+        $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])
+        ->where('nama_bumdes', 'like', "%" . $keyword . "%")
+        ->orWhere('unit_usaha_prioritas', 'like', "%" . $keyword . "%")
+        ->orderBy('updated_at','desc')->orderBy('nama_bumdes')
+        ->paginate(10)
+        ;
 
-        return view('usaha/usaha1', [
-            'title' => 'Bumdes',
-            'usaha' => $usaha,
-            'tgl'   => date('l, d F Y'),
-        ]);
+        if($usaha->count() == 0){
+            $usaha = Usaha::with(['kecamatan', 'kelurahan', 'kabupaten'])->orderBy('updated_at','desc')->orderBy('nama_bumdes')->paginate(10);
+            return view('usaha/usaha1', [
+                'title' => 'Bumdes',
+                'usaha' => $usaha,
+                'tgl'   => date('l, d F Y'),
+            ]);
+        }else {
+            return view('usaha/usaha1', [
+                'title' => 'Bumdes',
+                'usaha' => $usaha,
+                'tgl'   => date('l, d F Y'),
+            ]);
+        }
+
     }
 }

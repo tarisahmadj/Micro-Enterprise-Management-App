@@ -140,12 +140,21 @@ class UsahausulanController extends Controller
     public function searchUsulan(Request $request){
         $keyword = $request->search;
 
-        $usulan = Usahausulan::where('usaha_usulan', 'like', "%" . $keyword . "%")->get();
+        $usulan = Usahausulan::where('usaha_usulan', 'like', "%" . $keyword . "%")->orderBy('status')->paginate(10);
+        if ($usulan->count() == 0) {
+            $usulan = Usahausulan::paginate(10);
+            return view('usaha2/usaha2', [
+                'title' => 'Usulan Usaha',
+                'usaha' => $usulan,
+                'tgl'   => date('l, d F Y'),
+            ]);
+        }else {
+            return view('usaha2/usaha2', [
+                'title' => 'Usulan Usaha',
+                'usaha' => $usulan,
+                'tgl'   => date('l, d F Y'),
+            ]);
+        }
 
-        return view('usaha/usaha1', [
-            'title' => 'Usulan Usaha',
-            'usaha' => $usulan,
-            'tgl'   => date('l, d F Y'),
-        ]);
     }
 }

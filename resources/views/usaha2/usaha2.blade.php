@@ -25,9 +25,9 @@
         <div class="card-body">
           <div class="d-flex justify-content-between mb-3">
             <a href="/usulusaha/create" class="btn btn-primary btn-sm mb-3 font-weight-bold my-auto"><i class="ti-plus mr-2"></i>Tambah Usulan Usaha</a>
-            <!-- <form action="/searchUsulan" method="get">
+            <form action="/searchUsulan" method="get">
               <input type="text" name="search" class="form-control" placeholder="Search Usulan..." aria-label="Search...">
-            </form> -->
+            </form>
           </div>
           @if (session()->has('success'))
           <div class="alert alert-success alert-dismissible fade show" role="alert">
