@@ -1,200 +1,110 @@
+<h1 align="center">Project E-Bumdes Grobogan</h1>
+
 <!-- TABLE OF CONTENTS -->
-<!-- <details>
-  <summary>Table of Contents</summary>
+<details>
+  <summary>Daftar Isi</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#tentang-proyek">Tentang Proyek</a></li>
+    <li><a href="#dibuat-dengan">Dibuat Dengan</a></li>
+    <li><a href="#memulai">Memulai</a></li>
+    <li><a href="#instalasi">Instalasi</a></li>
+    <li><a href="#penggunaan">Penggunaan</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#kontribusi">Kontribusi</a></li>
+    <li><a href="#lisensi">Lisensi</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+    <li><a href="#penghargaan">Penghargaan</a></li>
   </ol>
-</details> -->
+</details>
 
+<!-- ABOUT THE PROJECT -->
+<h2 id="tentang-proyek">Tentang Proyek</h2>
 
+<p>Project <strong>E-Bumdes Grobogan</strong> dibuat untuk mendukung dan mengoptimalkan operasional Bumdes di Grobogan. Proyek ini menggunakan framework Laravel untuk mendukung efisiensi di sisi backend, dan menerapkan prinsip DRY (Don't Repeat Yourself) agar lebih efektif dan mudah dikelola.</p>
 
-<!-- ABOUT THE PROJECT
-## About The Project
+<p align="center">
+  <img src="https://example.com/product-screenshot.png" alt="Tampilan Produk" />
+</p>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<p>Proyek ini menawarkan:</p>
+<ul>
+  <li>Kemudahan dalam pengembangan fitur baru dan pemeliharaan proyek</li>
+  <li>Template README yang sudah siap pakai untuk mempercepat dokumentasi proyek</li>
+</ul>
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-<!-- TABLE OF CONTENTS -->
-<!-- <details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details> -->
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
 
+<h2 id="dibuat-dengan">Dibuat Dengan</h2>
 
-<!-- ABOUT THE PROJECT
-## About The Project
+<p>Project ini dibangun menggunakan beberapa framework dan library utama berikut:</p>
+<ul>
+  <li><a href="https://laravel.com">Laravel</a></li>
+  <li><a href="https://vuejs.org">Vue.js</a></li>
+  <li><a href="https://getbootstrap.com">Bootstrap</a></li>
+  <li><a href="https://jquery.com">jQuery</a></li>
+</ul>
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>-->
-
-<!--### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
- -->
-
-
-<!-- GETTING STARTED 
-## Getting Started
-
-Project ini berjalan menggunakan mesin [![Laravel][Laravel.com]][Laravel-url] dengan projek yang bernama E-Bumdes Grobogan
-
-### Langkah Awal
-
-- pastikan sudah mengintal composer
-- minimal php versi 8
-- buat database dengan nama `laravel`
--->
-<!--
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* instal compoer require
-  ```sh
-  composer install
-  ``` -->
-### Installation
-
-_Langkah- langkah penginstalan._
-
-1. Instal Composer
-   ```sh
-   composer install
-   ```
-2. migrasi dan seeder
-   ```sh
-   php artisan migrate:refresh --seed
-   ```
-<!-- 3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API'; -->
-   ```
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
- -->
-
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
 
 <!-- GETTING STARTED -->
-## Getting Started
+<h2 id="memulai">Memulai</h2>
 
-Project ini berjalan menggunakan mesin `LARAVEL` dengan projek yang bernama E-Bumdes Grobogan
+<p>Proyek ini berjalan menggunakan framework <strong>Laravel</strong>. Untuk menjalankannya, pastikan beberapa prasyarat berikut sudah dipenuhi.</p>
 
-### Langkah Awal
+<h3>Prasyarat</h3>
+<ul>
+  <li>Composer harus sudah terinstal.</li>
+  <li>PHP versi minimal 8.</li>
+  <li>Buat database dengan nama <code>laravel</code>.</li>
+</ul>
 
-- pastikan sudah mengintal composer
-- minimal php versi 8
-- buat database dengan nama `laravel`
+<h2 id="instalasi">Instalasi</h2>
 
-### Prerequisites
+<p>Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek ini:</p>
 
-This is an example of how to list things you need to use the software and how to install them.
-* instal compoer require
-  ```sh
-  composer install
-  ``` 
-### Installation
+<ol>
+  <li>Instal Composer untuk mengelola dependensi.</li>
+</ol>
 
-_Langkah- langkah penginstalan._
+<pre><code>composer install</code></pre>
 
-1. Instal Composer
-   ```sh
-   composer install
-   ```
-2. migrasi dan seeder
-   ```sh
-   php artisan migrate:refresh --seed
-   ```
-<!-- 3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API'; 
-   ```
--->
+<ol start="2">
+  <li>Jalankan migrasi dan seed untuk mengisi data awal.</li>
+</ol>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<pre><code>php artisan migrate:refresh --seed</code></pre>
+
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
+
+<!-- USAGE -->
+<h2 id="penggunaan">Penggunaan</h2>
+
+<p>Instruksi lebih lanjut mengenai penggunaan proyek ini akan ditambahkan pada bagian ini.</p>
+
+<!-- ROADMAP -->
+<h2 id="roadmap">Roadmap</h2>
+
+<p>Fitur dan rencana pengembangan lebih lanjut akan ditambahkan di bagian ini.</p>
+
+<!-- CONTRIBUTING -->
+<h2 id="kontribusi">Kontribusi</h2>
+
+<p>Kami menerima kontribusi dalam bentuk pull request. Pastikan untuk mengikuti panduan kontribusi yang ada.</p>
+
+<!-- LICENSE -->
+<h2 id="lisensi">Lisensi</h2>
+
+<p>Distribusi proyek ini mengikuti lisensi MIT. Lihat file <code>LICENSE</code> untuk informasi lebih lanjut.</p>
+
+<!-- CONTACT -->
+<h2 id="kontak">Kontak</h2>
+
+<p>Nama Pengembang - <a href="https://twitter.com/username">@username</a><br>
+Email: email@domain.com</p>
+
+<!-- ACKNOWLEDGMENTS -->
+<h2 id="penghargaan">Penghargaan</h2>
+
+<p>Terima kasih kepada semua kontributor yang telah membantu mengembangkan proyek ini.</p>
+
+<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
