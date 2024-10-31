@@ -96,12 +96,6 @@
 
 <p>Distribusi proyek ini mengikuti lisensi MIT. Lihat file <code>LICENSE</code> untuk informasi lebih lanjut.</p>
 
-<!-- CONTACT -->
-<h2 id="kontak">Kontak</h2>
-
-<p>Nama Pengembang - <a href="https://twitter.com/username">@username</a><br>
-Email: email@domain.com</p>
-
 <!-- ACKNOWLEDGMENTS -->
 <h2 id="penghargaan">Penghargaan</h2>
 
