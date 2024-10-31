@@ -1,42 +1,42 @@
-<h1 align="center">Project E-Bumdes Grobogan</h1>
+<h1 align="center">E-Bumdes Grobogan Project</h1>
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Daftar Isi</summary>
+  <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#tentang-proyek">Tentang Proyek</a></li>
-    <li><a href="#dibuat-dengan">Dibuat Dengan</a></li>
-    <li><a href="#memulai">Memulai</a></li>
-    <li><a href="#instalasi">Instalasi</a></li>
-    <li><a href="#penggunaan">Penggunaan</a></li>
+    <li><a href="#about-the-project">About the Project</a></li>
+    <li><a href="#built-with">Built With</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#kontribusi">Kontribusi</a></li>
-    <li><a href="#lisensi">Lisensi</a></li>
-    <li><a href="#kontak">Kontak</a></li>
-    <li><a href="#penghargaan">Penghargaan</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
 <!-- ABOUT THE PROJECT -->
-<h2 id="tentang-proyek">Tentang Proyek</h2>
+<h2 id="about-the-project">About the Project</h2>
 
-<p>Project <strong>E-Bumdes Grobogan</strong> dibuat untuk mendukung dan mengoptimalkan operasional Bumdes di Grobogan. Proyek ini menggunakan framework Laravel untuk mendukung efisiensi di sisi backend, dan menerapkan prinsip DRY (Don't Repeat Yourself) agar lebih efektif dan mudah dikelola.</p>
+<p>The <strong>E-Bumdes Grobogan</strong> project is designed to streamline and optimize operations for village-owned enterprises (Bumdes) in Grobogan. Built with the Laravel framework, this project embraces the DRY (Don't Repeat Yourself) principle to ensure efficiency, maintainability, and scalability on the backend.</p>
 
 <p align="center">
-  <img src="https://example.com/product-screenshot.png" alt="Tampilan Produk" />
+  <img src="https://example.com/product-screenshot.png" alt="Product Screenshot" />
 </p>
 
-<p>Proyek ini menawarkan:</p>
+<p>This project offers:</p>
 <ul>
-  <li>Kemudahan dalam pengembangan fitur baru dan pemeliharaan proyek</li>
-  <li>Template README yang sudah siap pakai untuk mempercepat dokumentasi proyek</li>
+  <li>Ease of feature expansion and project maintenance</li>
+  <li>A ready-to-use README template to streamline project documentation</li>
 </ul>
 
-<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<h2 id="dibuat-dengan">Dibuat Dengan</h2>
+<!-- BUILT WITH -->
+<h2 id="built-with">Built With</h2>
 
-<p>Project ini dibangun menggunakan beberapa framework dan library utama berikut:</p>
+<p>This project utilizes several key frameworks and libraries, including:</p>
 <ul>
   <li><a href="https://laravel.com">Laravel</a></li>
   <li><a href="https://vuejs.org">Vue.js</a></li>
@@ -44,61 +44,62 @@
   <li><a href="https://jquery.com">jQuery</a></li>
 </ul>
 
-<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
-<h2 id="memulai">Memulai</h2>
+<h2 id="getting-started">Getting Started</h2>
 
-<p>Proyek ini berjalan menggunakan framework <strong>Laravel</strong>. Untuk menjalankannya, pastikan beberapa prasyarat berikut sudah dipenuhi.</p>
+<p>This project is powered by the <strong>Laravel</strong> framework. To get started, make sure you meet the following prerequisites:</p>
 
-<h3>Prasyarat</h3>
+<h3>Prerequisites</h3>
 <ul>
-  <li>Composer harus sudah terinstal.</li>
-  <li>PHP versi minimal 8.</li>
-  <li>Buat database dengan nama <code>laravel</code>.</li>
+  <li>Composer must be installed.</li>
+  <li>PHP version 8 or above.</li>
+  <li>Create a database named <code>laravel</code>.</li>
 </ul>
 
-<h2 id="instalasi">Instalasi</h2>
+<!-- INSTALLATION -->
+<h2 id="installation">Installation</h2>
 
-<p>Ikuti langkah-langkah berikut untuk menginstal dan menjalankan proyek ini:</p>
+<p>Follow these steps to install and run the project:</p>
 
 <ol>
-  <li>Instal Composer untuk mengelola dependensi.</li>
+  <li>Install Composer to manage dependencies:</li>
 </ol>
 
 <pre><code>composer install</code></pre>
 
 <ol start="2">
-  <li>Jalankan migrasi dan seed untuk mengisi data awal.</li>
+  <li>Run migrations and seeders to populate the initial data:</li>
 </ol>
 
 <pre><code>php artisan migrate:refresh --seed</code></pre>
 
-<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE -->
-<h2 id="penggunaan">Penggunaan</h2>
+<h2 id="usage">Usage</h2>
 
-<p>Instruksi lebih lanjut mengenai penggunaan proyek ini akan ditambahkan pada bagian ini.</p>
+<p>Instructions on how to use the project will be provided here as development progresses.</p>
 
 <!-- ROADMAP -->
 <h2 id="roadmap">Roadmap</h2>
 
-<p>Fitur dan rencana pengembangan lebih lanjut akan ditambahkan di bagian ini.</p>
+<p>Future features and development plans will be added to this section as they are defined.</p>
 
 <!-- CONTRIBUTING -->
-<h2 id="kontribusi">Kontribusi</h2>
+<h2 id="contributing">Contributing</h2>
 
-<p>Kami menerima kontribusi dalam bentuk pull request. Pastikan untuk mengikuti panduan kontribusi yang ada.</p>
+<p>We welcome contributions! Please submit a pull request or open an issue to help improve this project.</p>
 
 <!-- LICENSE -->
-<h2 id="lisensi">Lisensi</h2>
+<h2 id="license">License</h2>
 
-<p>Distribusi proyek ini mengikuti lisensi MIT. Lihat file <code>LICENSE</code> untuk informasi lebih lanjut.</p>
+<p>This project is distributed under the MIT License. See the <code>LICENSE</code> file for more details.</p>
 
 <!-- ACKNOWLEDGMENTS -->
-<h2 id="penghargaan">Penghargaan</h2>
+<h2 id="acknowledgments">Acknowledgments</h2>
 
-<p>Terima kasih kepada semua kontributor yang telah membantu mengembangkan proyek ini.</p>
+<p>Thanks to all contributors who have supported the development of this project.</p>
 
-<p align="right">(<a href="#readme-top">Kembali ke atas</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
